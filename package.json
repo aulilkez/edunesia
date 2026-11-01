@@ -4,16 +4,28 @@
   "private": true,
   "workspaces": [
     "packages/*",
-    "apps/*",
-    "tools/*"
+    "apps/*"
   ],
   "type": "module",
   "scripts": {
-    "ready": "vp check && vp run -r test && vp run -r build",
-    "dev": "vp run website#dev",
+    "ready": "vp check && vp test --run && vp run -r test && vp run -r build",
+    "dev": "vp run web#dev",
+    "test": "vp test --run",
+    "test:ui": "vp test --ui --watch --no-open",
+    "test:e2e": "vp run web#test:e2e",
+    "storybook": "vp run web#storybook",
+    "storybook:build": "vp run web#storybook:build",
+    "test:load": "k6 run tooling/k6/trpc-health.js",
+    "db:up": "docker compose up -d postgres",
+    "db:down": "docker compose down",
+    "db:generate": "vp run @edunesia/database#db:generate",
+    "db:migrate": "vp run @edunesia/database#db:migrate",
+    "db:studio": "vp run @edunesia/database#db:studio",
     "prepare": "vp config"
   },
   "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@vitest/ui": "5.0.5",
     "vite": "catalog:",
     "vite-plus": "catalog:"
   },
@@ -33,5 +45,8 @@
   "catalog": {
     "vite": "npm:@voidzero-dev/vite-plus-core@1.3.0",
     "vite-plus": "1.3.0"
+  },
+  "patchedDependencies": {
+    "@tanstack/start-plugin-core@1.171.55": "patches/@tanstack%2Fstart-plugin-core@1.171.55.patch"
   }
 }

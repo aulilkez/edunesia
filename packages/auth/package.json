@@ -1,0 +1,17 @@
+{
+  "name": "@edunesia/auth",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./server": "./src/server.ts",
+    "./client": "./src/client.ts",
+    "./schemas": "./src/schemas.ts"
+  },
+  "dependencies": {
+    "@edunesia/database": "workspace:*",
+    "@edunesia/env": "workspace:*",
+    "better-auth": "^1.7.10",
+    "zod": "^4.6.7"
+  }
+}

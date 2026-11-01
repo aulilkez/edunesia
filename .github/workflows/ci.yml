@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.4
+      - run: bun install --frozen-lockfile
+      - run: vp check
+      - run: vp run -r test
+      - run: vp run web#build
+      - run: bunx playwright install --with-deps chromium
+      - run: vp run web#test:e2e
+      - run: vp run web#storybook:build

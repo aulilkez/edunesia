@@ -1,0 +1,20 @@
+{
+  "name": "@edunesia/trpc",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./server": "./src/server.ts"
+  },
+  "dependencies": {
+    "@edunesia/auth": "workspace:*",
+    "@edunesia/database": "workspace:*",
+    "@edunesia/env": "workspace:*",
+    "@edunesia/i18n": "workspace:*",
+    "@edunesia/logger": "workspace:*",
+    "@trpc/server": "^11.19.0",
+    "drizzle-orm": "^0.45.4",
+    "zod": "^4.6.7"
+  }
+}

@@ -1,0 +1,11 @@
+@import "@edunesia/ui/styles/globals.css";
+
+html:has(#home-title) {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:has(#home-title) {
+    scroll-behavior: auto;
+  }
+}

@@ -1,9 +1,4 @@
 {
-  "compilerOptions": {
-    "noEmit": true,
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
-    "allowImportingTsExtensions": true,
-    "esModuleInterop": true
-  }
+  "extends": "./packages/config/tsconfig.base.json",
+  "exclude": ["adi/**", "node_modules"]
 }

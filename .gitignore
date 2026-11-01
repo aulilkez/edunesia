@@ -31,3 +31,14 @@ dist-ssr
 
 # AI agent worktrees
 .claude/worktrees/
+
+# Generated browser and component test outputs
+playwright-report/
+test-results/
+storybook-static/
+
+# Local ADI source repository used as migration reference
+/adi/
+
+# Storybook diagnostics
+debug-storybook.log
