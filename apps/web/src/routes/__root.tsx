@@ -1,12 +1,13 @@
 import { I18nProvider } from "@lingui/react";
 import type { QueryClient } from "@tanstack/react-query";
 import { HeadContent, Outlet, Scripts, createRootRouteWithContext } from "@tanstack/react-router";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 
 import { createI18n } from "@edunesia/i18n";
 import { TooltipProvider } from "@edunesia/ui/components/tooltip";
 
 import { NotFoundPage } from "../components/not-found-page";
+import { restoreLocalePreference } from "../lib/locale-preferences";
 import "../style.css";
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
@@ -24,6 +25,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootDocument() {
   const i18n = useMemo(() => createI18n(), []);
+  useEffect(() => {
+    restoreLocalePreference(i18n);
+  }, [i18n]);
+
   return (
     <html lang="en">
       <head>
