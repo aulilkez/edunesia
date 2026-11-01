@@ -4,7 +4,6 @@ import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
 
 import type { Auth } from "@edunesia/auth/server";
 import type { Database } from "@edunesia/database";
-import { createPackageLogger } from "@edunesia/logger";
 
 import { AppException } from "./exceptions";
 
@@ -65,25 +64,10 @@ export async function handleTRPCRequest<TRouter extends AnyTRPCRouter>(
   router: TRouter,
   createContext: (options: FetchCreateContextFnOptions) => Promise<unknown>,
 ): Promise<Response> {
-  const logger = createPackageLogger("trpc", { method: request.method, route: "/api/trpc" });
-  try {
-    const response = await fetchRequestHandler({
-      endpoint: "/api/trpc",
-      req: request,
-      router,
-      createContext,
-    });
-    logger.set({
-      status: response.status,
-      outcome: response.status >= 500 ? "error" : "completed",
-    });
-    if (response.status >= 500) logger.error(new Error("tRPC request failed"));
-    return response;
-  } catch (error) {
-    logger.set({ outcome: "error", errorType: error instanceof Error ? error.name : "unknown" });
-    logger.error(new Error("tRPC request failed"));
-    throw error;
-  } finally {
-    logger.emit();
-  }
+  return fetchRequestHandler({
+    endpoint: "/api/trpc",
+    req: request,
+    router,
+    createContext,
+  });
 }
