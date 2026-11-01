@@ -16,7 +16,7 @@ function filterTanStackStartPlugins(plugin: unknown): unknown {
 }
 
 const config: StorybookConfig = {
-  stories: ["../src/**/*.stories.@(ts|tsx)"],
+  stories: ["../apps/web/src/**/*.stories.@(ts|tsx)"],
   addons: ["@storybook/addon-docs"],
   framework: { name: "@storybook/react-vite", options: {} },
   viteFinal: async (viteConfig) => ({
