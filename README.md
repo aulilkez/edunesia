@@ -33,14 +33,14 @@ Make quality education accessible to everyone, regardless of who they are or whe
 
 ### Our Principles
 
-| Principle | Description |
-|---|---|
-| Free Education | Learning should be accessible without mandatory subscriptions. |
-| Open Source | An open platform built and improved by the community. |
-| Community Driven | Everyone can contribute knowledge and learning resources. |
-| Accessible | Designed for different devices, languages, and abilities. |
-| Quality First | Learning materials should be trustworthy and maintainable. |
-| Global Learning | Knowledge should have no geographical boundaries. |
+| Principle        | Description                                                    |
+| ---------------- | -------------------------------------------------------------- |
+| Free Education   | Learning should be accessible without mandatory subscriptions. |
+| Open Source      | An open platform built and improved by the community.          |
+| Community Driven | Everyone can contribute knowledge and learning resources.      |
+| Accessible       | Designed for different devices, languages, and abilities.      |
+| Quality First    | Learning materials should be trustworthy and maintainable.     |
+| Global Learning  | Knowledge should have no geographical boundaries.              |
 
 ## Features
 
@@ -68,27 +68,27 @@ Built with open-source principles, extensible architecture, and shared developme
 
 Edunesia uses a modern TypeScript ecosystem designed for maintainability, performance, and developer experience.
 
-| Layer | Technology |
-|---|---|
-| Runtime & Package Manager | Bun |
-| Monorepo Tooling | Vite+ |
-| Framework | TanStack Start |
-| UI Framework | React |
-| Styling | Tailwind CSS |
-| Component System | shadcn/ui |
-| Authentication | Better Auth |
-| Database | PostgreSQL |
-| ORM | Drizzle ORM |
-| API | tRPC |
-| Server State | TanStack Query |
-| Client State | Zustand |
-| Forms | TanStack Form |
-| Validation | Zod |
-| Internationalization | Lingui |
-| Testing | Vitest |
-| E2E Testing | Playwright |
-| Load Testing | k6 |
-| Component Development | Storybook |
+| Layer                     | Technology     |
+| ------------------------- | -------------- |
+| Runtime & Package Manager | Bun            |
+| Monorepo Tooling          | Vite+          |
+| Framework                 | TanStack Start |
+| UI Framework              | React          |
+| Styling                   | Tailwind CSS   |
+| Component System          | shadcn/ui      |
+| Authentication            | Better Auth    |
+| Database                  | PostgreSQL     |
+| ORM                       | Drizzle ORM    |
+| API                       | tRPC           |
+| Server State              | TanStack Query |
+| Client State              | Zustand        |
+| Forms                     | TanStack Form  |
+| Validation                | Zod            |
+| Internationalization      | Lingui         |
+| Testing                   | Vitest         |
+| E2E Testing               | Playwright     |
+| Load Testing              | k6             |
+| Component Development     | Storybook      |
 
 ## Architecture
 
@@ -122,18 +122,18 @@ edunesia/
 
 ### Workspace Responsibilities
 
-| Package | Responsibility |
-|---|---|
-| `apps/web` | TanStack Start routes, features, API handlers, and providers |
-| `@edunesia/auth` | Better Auth server/client setup and auth schemas |
+| Package              | Responsibility                                                  |
+| -------------------- | --------------------------------------------------------------- |
+| `apps/web`           | TanStack Start routes, features, API handlers, and providers    |
+| `@edunesia/auth`     | Better Auth server/client setup and auth schemas                |
 | `@edunesia/database` | PostgreSQL connection, Drizzle schemas, helpers, and migrations |
-| `@edunesia/env` | Zod-validated client and server environment |
-| `@edunesia/i18n` | Lingui locale catalogs and locale utilities |
-| `@edunesia/query` | TanStack Query integration |
-| `@edunesia/trpc` | Typed API integration |
-| `@edunesia/ui` | Shared shadcn-style components, styles, and utilities |
-| `@edunesia/logger` | Shared logging setup |
-| `@edunesia/config` | Shared TypeScript base configuration |
+| `@edunesia/env`      | Zod-validated client and server environment                     |
+| `@edunesia/i18n`     | Lingui locale catalogs and locale utilities                     |
+| `@edunesia/query`    | TanStack Query integration                                      |
+| `@edunesia/trpc`     | Typed API integration                                           |
+| `@edunesia/ui`       | Shared shadcn-style components, styles, and utilities           |
+| `@edunesia/logger`   | Shared logging setup                                            |
+| `@edunesia/config`   | Shared TypeScript base configuration                            |
 
 ## Getting Started
 
@@ -281,13 +281,13 @@ Our development workflow uses:
 
 Edunesia separates client state from server state.
 
-| State Type | Solution |
-|---|---|
-| Server state | TanStack Query |
-| UI state | Zustand |
-| Authentication state | Better Auth |
-| Form state | TanStack Form |
-| URL state | TanStack Router |
+| State Type           | Solution        |
+| -------------------- | --------------- |
+| Server state         | TanStack Query  |
+| UI state             | Zustand         |
+| Authentication state | Better Auth     |
+| Form state           | TanStack Form   |
+| URL state            | TanStack Router |
 
 The current theme preference is managed through the Zustand UI store.
 
