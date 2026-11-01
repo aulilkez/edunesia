@@ -1,7 +1,11 @@
 # Edunesia
 
 <p align="center">
-  <img src="docs/assets/edunesia-wordmark.png" alt="Edunesia — Open Education for Everyone" width="520" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/edunesia-wordmark-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="docs/assets/edunesia-wordmark.png">
+    <img alt="Edunesia — Open Education for Everyone" src="docs/assets/edunesia-wordmark.png" width="520" />
+  </picture>
 </p>
 
 <p align="center">
