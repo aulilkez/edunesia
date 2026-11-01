@@ -1,6 +1,10 @@
 # Edunesia
 
 <p align="center">
+  <img src="docs/assets/edunesia-wordmark.png" alt="Edunesia — Open Education for Everyone" width="520" />
+</p>
+
+<p align="center">
   <strong>Open Knowledge. Unlimited Possibilities.</strong>
 </p>
 
