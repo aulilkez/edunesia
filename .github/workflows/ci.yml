@@ -13,6 +13,10 @@ jobs:
         with:
           bun-version: 1.4.4
       - run: bun install --frozen-lockfile
+      - name: Expose the workspace Vite+ CLI
+        run: |
+          echo "$PWD/node_modules/.bin" >> "$GITHUB_PATH"
+          ./node_modules/.bin/vp --version
       - run: vp check
       - run: vp run -r test
       - run: vp run web#build
