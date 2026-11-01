@@ -1,0 +1,76 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "dependencyDashboard": true,
+  "labels": ["dependencies"],
+  "prConcurrentLimit": 5,
+  "branchConcurrentLimit": 5,
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "labels": ["dependencies", "security"],
+    "prConcurrentLimit": 2
+  },
+  "packageRules": [
+    {
+      "description": "Group production dependency updates",
+      "matchManagers": ["bun"],
+      "matchDepTypes": ["dependencies"],
+      "groupName": "production dependencies"
+    },
+    {
+      "description": "Group development dependency updates",
+      "matchManagers": ["bun"],
+      "matchDepTypes": ["devDependencies"],
+      "groupName": "development dependencies"
+    },
+    {
+      "description": "Group testing tool updates",
+      "matchManagers": ["bun"],
+      "matchPackageNames": [
+        "@playwright/**",
+        "@testing-library/**",
+        "@vitest/**",
+        "@storybook/**",
+        "playwright",
+        "storybook",
+        "vitest",
+        "jsdom"
+      ],
+      "groupName": "testing tools"
+    },
+    {
+      "description": "Group TanStack ecosystem updates",
+      "matchManagers": ["bun"],
+      "matchPackageNames": ["@tanstack/**"],
+      "groupName": "TanStack ecosystem"
+    },
+    {
+      "description": "Group React ecosystem updates",
+      "matchManagers": ["bun"],
+      "matchPackageNames": [
+        "react",
+        "react-dom",
+        "react-*",
+        "@types/react",
+        "@types/react-dom",
+        "@vitejs/plugin-react",
+        "@testing-library/react"
+      ],
+      "groupName": "React ecosystem"
+    },
+    {
+      "description": "Do not automerge major updates",
+      "matchUpdateTypes": ["major"],
+      "automerge": false
+    },
+    {
+      "description": "Automerge only DefinitelyTyped patch updates after PR checks pass",
+      "matchManagers": ["bun"],
+      "matchDepTypes": ["devDependencies"],
+      "matchPackageNames": ["@types/**"],
+      "matchUpdateTypes": ["patch"],
+      "automerge": true,
+      "automergeType": "pr"
+    }
+  ]
+}
