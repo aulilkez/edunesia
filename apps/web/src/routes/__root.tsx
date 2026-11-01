@@ -4,6 +4,7 @@ import { HeadContent, Outlet, Scripts, createRootRouteWithContext } from "@tanst
 import { useMemo } from "react";
 
 import { createI18n } from "@edunesia/i18n";
+import { TooltipProvider } from "@edunesia/ui/components/tooltip";
 
 import { NotFoundPage } from "../components/not-found-page";
 import "../style.css";
@@ -30,7 +31,9 @@ function RootDocument() {
       </head>
       <body className="min-w-[320px] bg-white font-sans text-[#17251f] antialiased">
         <I18nProvider i18n={i18n}>
-          <Outlet />
+          <TooltipProvider>
+            <Outlet />
+          </TooltipProvider>
         </I18nProvider>
         <Scripts />
       </body>
