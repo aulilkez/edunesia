@@ -8,6 +8,9 @@
     "./client": "./src/client.ts",
     "./server": "./src/server.ts"
   },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
   "dependencies": {
     "zod": "^4.6.7"
   }

@@ -1,7 +1,8 @@
 import { createIsomorphicFn } from "@tanstack/react-start";
 import { getRequest } from "@tanstack/react-start/server";
-import type { AppRouter } from "@edunesia/trpc";
+
 import { createAPIContext } from "@edunesia/query";
+import type { AppRouter } from "@edunesia/trpc";
 
 export const { TRPCProvider, useTRPC, useTRPCClient } = createAPIContext<AppRouter>();
 

@@ -17,8 +17,8 @@ jobs:
         run: |
           echo "$PWD/node_modules/.bin" >> "$GITHUB_PATH"
           ./node_modules/.bin/vp --version
-      - run: vp check
-      - run: vp run -r test
+      - run: bun run check
+      - run: bun run test
       - run: vp run web#build
       - run: bunx playwright install --with-deps chromium
       - run: vp run web#test:e2e

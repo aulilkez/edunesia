@@ -1,8 +1,10 @@
 import { I18nProvider } from "@lingui/react";
-import { HeadContent, Outlet, Scripts, createRootRouteWithContext } from "@tanstack/react-router";
 import type { QueryClient } from "@tanstack/react-query";
+import { HeadContent, Outlet, Scripts, createRootRouteWithContext } from "@tanstack/react-router";
 import { useMemo } from "react";
+
 import { createI18n } from "@edunesia/i18n";
+
 import { NotFoundPage } from "../components/not-found-page";
 import "../style.css";
 

@@ -1,4 +1,5 @@
 import { index, jsonb, pgTable, text, uniqueIndex } from "drizzle-orm/pg-core";
+
 import { baseColumns } from "./base";
 import { users } from "./users";
 

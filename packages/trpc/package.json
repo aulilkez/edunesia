@@ -7,6 +7,9 @@
     ".": "./src/index.ts",
     "./server": "./src/server.ts"
   },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
   "dependencies": {
     "@edunesia/auth": "workspace:*",
     "@edunesia/database": "workspace:*",

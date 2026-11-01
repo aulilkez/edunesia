@@ -1,10 +1,11 @@
 import { useLingui } from "@lingui/react";
-import { createServerFn } from "@tanstack/react-start";
 import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
+import { createServerFn } from "@tanstack/react-start";
 import { Activity, Database, Languages, RefreshCw } from "lucide-react";
-import { catalogs } from "@edunesia/i18n";
+
 import { getDatabase } from "@edunesia/database";
 import { serverEnv } from "@edunesia/env/server";
+import { catalogs } from "@edunesia/i18n";
 import { Button } from "@edunesia/ui/components/button";
 import {
   Card,
@@ -13,6 +14,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@edunesia/ui/components/card";
+
 import { LanguageSelect } from "../components/language-select";
 
 const getHealth = createServerFn({ method: "GET" }).handler(async () => {

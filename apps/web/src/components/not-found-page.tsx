@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Activity, ArrowLeft } from "lucide-react";
+
 import { buttonVariants } from "@edunesia/ui/components/button";
 
 export function NotFoundPage() {

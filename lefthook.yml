@@ -1,0 +1,21 @@
+pre-commit:
+  parallel: true
+  jobs:
+    - name: lint staged source
+      glob: "*.{js,jsx,ts,tsx,mjs,cjs,mts,cts}"
+      run: bun run vp lint --report-unused-disable-directives-severity warn {staged_files}
+    - name: format staged files
+      glob: "*.{js,jsx,ts,tsx,mjs,cjs,mts,cts,json,jsonc,md,yml,yaml,css,html}"
+      run: bun run vp fmt --check {staged_files}
+    - name: unit tests
+      run: bun run test
+
+commit-msg:
+  jobs:
+    - name: validate conventional commit
+      run: bun tooling/validate-commit-message.ts {1}
+
+pre-push:
+  jobs:
+    - name: quality checks
+      run: bun run check && bun run test

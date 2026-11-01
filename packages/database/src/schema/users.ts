@@ -1,4 +1,5 @@
 import { boolean, index, pgTable, text, timestamp, uniqueIndex } from "drizzle-orm/pg-core";
+
 import { userRoles } from "./enums";
 
 export const users = pgTable(

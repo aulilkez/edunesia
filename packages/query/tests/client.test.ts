@@ -1,4 +1,5 @@
 import { expect, test } from "vite-plus/test";
+
 import { createQueryClient } from "../src";
 
 test("shared query client retries queries and avoids mutation retries", () => {

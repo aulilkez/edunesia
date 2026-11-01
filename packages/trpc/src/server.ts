@@ -1,10 +1,12 @@
 import { initTRPC, TRPCError, type AnyTRPCRouter } from "@trpc/server";
 import type { FetchCreateContextFnOptions } from "@trpc/server/adapters/fetch";
 import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
+
 import type { Auth } from "@edunesia/auth/server";
 import type { Database } from "@edunesia/database";
-import { AppException } from "./exceptions";
 import { createPackageLogger } from "@edunesia/logger";
+
+import { AppException } from "./exceptions";
 
 export function createTRPCContext(input: { auth: Auth; db: Database }) {
   return async (options: FetchCreateContextFnOptions) => {

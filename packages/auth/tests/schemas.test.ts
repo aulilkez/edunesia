@@ -1,4 +1,5 @@
 import { expect, test } from "vite-plus/test";
+
 import { LEGAL_DOCUMENTS_AVAILABLE, signInSchema, signUpSchema } from "../src/schemas";
 
 test("sign-in schema validates email and nonempty password", () => {

@@ -1,10 +1,12 @@
 import { betterAuth } from "better-auth";
-import { APIError, createAuthMiddleware } from "better-auth/api";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
+import { APIError, createAuthMiddleware } from "better-auth/api";
+
 import type { Database } from "@edunesia/database";
 import { accounts, sessions, users, verifications } from "@edunesia/database/schema";
 import type { ServerEnv } from "@edunesia/env/server";
 import { serverEnv } from "@edunesia/env/server";
+
 import { LEGAL_DOCUMENTS_AVAILABLE, signUpAuthSchema } from "./schemas";
 
 export function createAuth(database: Database, env: ServerEnv = serverEnv) {

@@ -1,7 +1,8 @@
 import { setupI18n, type I18n, type Messages } from "@lingui/core";
+
 import { defaultLocale, type Locale } from "./config";
-import { messages as idMessages } from "./locales/id-ID";
 import { messages as enMessages } from "./locales/en-US";
+import { messages as idMessages } from "./locales/id-ID";
 import { messages as jaMessages } from "./locales/ja-JP";
 
 export * from "./config";

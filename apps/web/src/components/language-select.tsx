@@ -1,5 +1,6 @@
-import { useId } from "react";
 import { useLingui } from "@lingui/react";
+import { useId } from "react";
+
 import { activateLocale, locales, type Locale } from "@edunesia/i18n";
 import {
   Select,

@@ -1,4 +1,5 @@
 import { expect, test } from "vite-plus/test";
+
 import { clientEnv } from "../src/client";
 
 test("client environment exposes only approved public settings", () => {

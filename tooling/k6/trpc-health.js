@@ -1,5 +1,5 @@
-import http from "k6/http";
 import { check, sleep } from "k6";
+import http from "k6/http";
 
 const baseUrl = __ENV.BASE_URL ?? "http://127.0.0.1:5173";
 

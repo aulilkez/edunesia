@@ -1,4 +1,5 @@
 import { expect, test } from "vite-plus/test";
+
 import { activateLocale, createI18n, defaultLocale, locales } from "../src";
 
 test("i18n instances load localized catalogs independently", () => {

@@ -1,7 +1,9 @@
-import { setupRouterSsrQueryIntegration } from "@tanstack/react-router-ssr-query";
 import { createRouter as createTanStackRouter } from "@tanstack/react-router";
-import type { AppRouter } from "@edunesia/trpc";
+import { setupRouterSsrQueryIntegration } from "@tanstack/react-router-ssr-query";
+
 import { createAPIClient, createQueryClient } from "@edunesia/query";
+import type { AppRouter } from "@edunesia/trpc";
+
 import { getTRPCHeaders, getTRPCUrl, TRPCProvider } from "./lib/trpc";
 import { routeTree } from "./routeTree.gen";
 
