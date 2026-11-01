@@ -1,0 +1,32 @@
+---
+title: Variables in JavaScript
+description: Store and update values with const and let.
+slug: variables
+difficulty: beginner
+estimatedTime: 10
+order: 1
+learningObjectives:
+  - Choose between const and let for a value.
+  - Read a variable declaration.
+prerequisites:
+  - first-program
+contentSource: git
+version: 1
+---
+
+# Variables in JavaScript
+
+Variables give names to values so a program can use them later.
+
+<CodeBlock language="javascript">
+  const course = "JavaScript Foundations"; let lessonsCompleted = 0;
+</CodeBlock>
+
+Use `const` when a binding should not be reassigned. Use `let` when it needs a new value later.
+
+| Keyword | Reassignable | Typical use                              |
+| ------- | ------------ | ---------------------------------------- |
+| `const` | No           | Values that stay bound to the same value |
+| `let`   | Yes          | Values that change during a task         |
+
+<Exercise id="javascript-variables-practice" />

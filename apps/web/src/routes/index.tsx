@@ -1,5 +1,5 @@
 import { useLingui } from "@lingui/react";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -150,6 +150,12 @@ function HomePage() {
               </p>
             </div>
           </div>
+          <Link
+            to="/learn/sample"
+            className="mt-5 inline-flex min-h-11 items-center rounded-md text-sm font-medium text-primary underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
+          >
+            {i18n._("landing.sampleLesson")}
+          </Link>
         </div>
 
         <LearningPreview />

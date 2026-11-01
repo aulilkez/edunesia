@@ -1,4 +1,5 @@
 @import "@edunesia/ui/styles/globals.css";
+@import "@edunesia/content/styles/katex.css";
 
 html:has(#home-title) {
   scroll-behavior: smooth;

@@ -14,6 +14,7 @@ export const messages: Messages = {
     "Discover, learn, and share knowledge across every discipline. A global learning ecosystem built by the community, accessible to everyone, everywhere.",
   "landing.tagline": "Open Knowledge. Unlimited Possibilities.",
   "landing.startLearning": "Start Learning",
+  "landing.sampleLesson": "Read a sample lesson",
   "landing.exploreCommunity": "Explore Community",
   "landing.freeToLearn": "Free to learn.",
   "landing.openToContribute": "Open to contribute.",

@@ -68,7 +68,7 @@ export default defineConfig({
     options: { typeAware: true, typeCheck: true, reportUnusedDisableDirectives: "warn" },
   },
   test: {
-    include: ["tests/**/*.{test,spec}.ts", "packages/*/tests/**/*.{test,spec}.ts"],
+    include: ["tests/**/*.{test,spec}.{ts,tsx}", "packages/*/tests/**/*.{test,spec}.{ts,tsx}"],
     exclude: ["**/node_modules/**", "**/dist/**", "apps/**"],
     clearMocks: true,
     restoreMocks: true,

@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@edunesia/auth": "workspace:*",
+    "@edunesia/content": "workspace:*",
     "@edunesia/database": "workspace:*",
     "@edunesia/env": "workspace:*",
     "@edunesia/i18n": "workspace:*",
@@ -36,12 +37,14 @@
     "zustand": "^5.0.16"
   },
   "devDependencies": {
+    "@mdx-js/rollup": "^3.1.1",
     "@playwright/test": "^1.64.1",
     "@storybook/addon-docs": "^10.6.5",
     "@storybook/react-vite": "^10.6.5",
     "@tanstack/router-cli": "^1.132.0",
     "@testing-library/react": "^16.1.0",
     "@testing-library/user-event": "^14.5.0",
+    "@types/mdx": "^2.0.14",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "@vitejs/plugin-react": "^6.0.1",

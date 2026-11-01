@@ -8,9 +8,13 @@ import { TooltipProvider } from "@edunesia/ui/components/tooltip";
 
 import { NotFoundPage } from "../components/not-found-page";
 import { restoreLocalePreference } from "../lib/locale-preferences";
+import type { loadOfficialLesson } from "../lib/official-content";
 import "../style.css";
 
-export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+export const Route = createRootRouteWithContext<{
+  queryClient: QueryClient;
+  loadOfficialLesson: typeof loadOfficialLesson;
+}>()({
   head: () => ({
     meta: [
       { charSet: "utf-8" },

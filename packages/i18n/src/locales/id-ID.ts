@@ -14,6 +14,7 @@ export const messages: Messages = {
     "Temukan, pelajari, dan bagikan pengetahuan dari berbagai disiplin ilmu. Ekosistem pembelajaran global yang dibangun oleh komunitas dan dapat diakses siapa saja, di mana saja.",
   "landing.tagline": "Pengetahuan Terbuka. Peluang Tanpa Batas.",
   "landing.startLearning": "Mulai Belajar",
+  "landing.sampleLesson": "Baca contoh pelajaran",
   "landing.exploreCommunity": "Jelajahi Komunitas",
   "landing.freeToLearn": "Belajar gratis.",
   "landing.openToContribute": "Terbuka untuk berkontribusi.",

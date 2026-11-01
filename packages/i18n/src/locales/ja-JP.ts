@@ -14,6 +14,7 @@ export const messages: Messages = {
     "あらゆる分野の知識を見つけ、学び、共有しましょう。コミュニティが築く、誰もがどこからでも利用できるグローバルな学習エコシステムです。",
   "landing.tagline": "開かれた知識。無限の可能性。",
   "landing.startLearning": "学習を始める",
+  "landing.sampleLesson": "サンプルレッスンを読む",
   "landing.exploreCommunity": "コミュニティを探す",
   "landing.freeToLearn": "学びは無料。",
   "landing.openToContribute": "誰でも貢献できます。",
