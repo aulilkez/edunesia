@@ -15,6 +15,20 @@
       "when": 1793367459985,
       "tag": "0001_wandering_avengers",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1793625624444,
+      "tag": "0002_magenta_dagger",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1793625778640,
+      "tag": "0003_sturdy_mathemanic",
+      "breakpoints": true
     }
   ]
 }

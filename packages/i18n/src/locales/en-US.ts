@@ -7,6 +7,8 @@ export const messages: Messages = {
   "app.health.loading": "Checking services…",
   "app.health.ok": "Operational",
   "app.health.error": "Needs attention",
+  "auth.securityNote": "Your account is protected with secure, encrypted sessions.",
+  "auth.verified.body": "Your email address has been verified.",
   "landing.eyebrow": "OPEN EDUCATION FOR EVERYONE",
   "landing.headlineLead": "Knowledge Should Be Open to",
   "landing.headlineEmphasis": "Everyone.",

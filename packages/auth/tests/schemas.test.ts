@@ -1,6 +1,13 @@
 import { expect, test } from "vite-plus/test";
 
-import { LEGAL_DOCUMENTS_AVAILABLE, signInSchema, signUpSchema } from "../src/schemas";
+import {
+  LEGAL_DOCUMENTS_AVAILABLE,
+  forgotPasswordSchema,
+  resetPasswordSchema,
+  signInSchema,
+  signUpFormSchema,
+  signUpSchema,
+} from "../src/schemas";
 
 test("sign-in schema validates email and nonempty password", () => {
   const valid = signInSchema.safeParse({
@@ -47,4 +54,32 @@ test("sign-up schema normalizes identity values and validates workspace/password
 
 test("account creation remains blocked until policy documents are published", () => {
   expect(LEGAL_DOCUMENTS_AVAILABLE).toBe(false);
+});
+
+test("sign-up confirmation and recovery forms reject mismatched passwords", () => {
+  const signup = {
+    name: "Ari Data",
+    email: "ari@example.com",
+    workspaceName: "Ari workspace",
+    password: "StrongPassword12",
+    confirmPassword: "StrongPassword12",
+    acceptTerms: true,
+  };
+  expect(signUpFormSchema.safeParse(signup).success).toBe(true);
+  expect(
+    signUpFormSchema.safeParse({ ...signup, confirmPassword: "DifferentPassword12" }).success,
+  ).toBe(false);
+  expect(
+    resetPasswordSchema.safeParse({
+      password: "StrongPassword12",
+      confirmPassword: "StrongPassword12",
+    }).success,
+  ).toBe(true);
+  expect(
+    resetPasswordSchema.safeParse({ password: "StrongPassword12", confirmPassword: "different" })
+      .success,
+  ).toBe(false);
+  expect(forgotPasswordSchema.safeParse({ email: " Person@Example.com " }).data?.email).toBe(
+    "person@example.com",
+  );
 });

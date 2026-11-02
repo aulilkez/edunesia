@@ -33,6 +33,30 @@ export const signUpSchema = z.object({
     .refine(Boolean, "You must agree to the Terms of Service and Privacy Policy."),
 });
 export type SignUpInput = z.infer<typeof signUpSchema>;
+export const signUpFormSchema = signUpSchema
+  .extend({ confirmPassword: z.string() })
+  .refine((value) => value.password === value.confirmPassword, {
+    path: ["confirmPassword"],
+    message: "Passwords do not match.",
+  });
+
+export const forgotPasswordSchema = z.object({
+  email: z
+    .string()
+    .trim()
+    .pipe(z.email())
+    .transform((email) => email.toLowerCase()),
+});
+
+export const resetPasswordSchema = z
+  .object({
+    password: z.string().min(12).max(128),
+    confirmPassword: z.string(),
+  })
+  .refine((value) => value.password === value.confirmPassword, {
+    path: ["confirmPassword"],
+    message: "Passwords do not match.",
+  });
 
 export const signUpAuthSchema = signUpSchema.pick({
   name: true,

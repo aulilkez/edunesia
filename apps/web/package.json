@@ -22,6 +22,7 @@
     "@edunesia/ui": "workspace:*",
     "@lingui/react": "^6.10.0",
     "@tailwindcss/vite": "^4.1.18",
+    "@tanstack/react-form": "^1.33.5",
     "@tanstack/react-query": "^5.104.4",
     "@tanstack/react-router": "1.170.46",
     "@tanstack/react-router-ssr-query": "^1",

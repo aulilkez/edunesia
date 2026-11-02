@@ -10,12 +10,19 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as EmailVerifiedRouteImport } from './routes/email-verified'
 import { Route as HealthRouteImport } from './routes/health'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as SignInRouteImport } from './routes/sign-in'
+import { Route as SignUpRouteImport } from './routes/sign-up'
+import { Route as VerifyRouteImport } from './routes/verify'
 import { Route as LearnIndexRouteImport } from './routes/learn.index'
 import { Route as LearnBookmarksRouteImport } from './routes/learn.bookmarks'
 import { Route as LearnMyLearningRouteImport } from './routes/learn.my-learning'
 import { Route as LearnProgressRouteImport } from './routes/learn.progress'
 import { Route as LearnSampleRouteImport } from './routes/learn.sample'
+import { Route as ResetPasswordTokenRouteImport } from './routes/reset-password.$token'
+import { Route as ApiAuthSplatRouteImport } from './routes/api.auth.$'
 import { Route as LearnCourseSlugLessonSlugRouteImport } from './routes/learn.$courseSlug.$lessonSlug'
 import { Route as LearnCoursesSlugRouteImport } from './routes/learn.courses.$slug'
 
@@ -24,9 +31,34 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EmailVerifiedRoute = EmailVerifiedRouteImport.update({
+  id: '/email-verified',
+  path: '/email-verified',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HealthRoute = HealthRouteImport.update({
   id: '/health',
   path: '/health',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SignInRoute = SignInRouteImport.update({
+  id: '/sign-in',
+  path: '/sign-in',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SignUpRoute = SignUpRouteImport.update({
+  id: '/sign-up',
+  path: '/sign-up',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VerifyRoute = VerifyRouteImport.update({
+  id: '/verify',
+  path: '/verify',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LearnIndexRoute = LearnIndexRouteImport.update({
@@ -54,6 +86,16 @@ const LearnSampleRoute = LearnSampleRouteImport.update({
   path: '/learn/sample',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResetPasswordTokenRoute = ResetPasswordTokenRouteImport.update({
+  id: '/$token',
+  path: '/$token',
+  getParentRoute: () => ResetPasswordRoute,
+} as any)
+const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
+  id: '/api/auth/$',
+  path: '/api/auth/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LearnCourseSlugLessonSlugRoute =
   LearnCourseSlugLessonSlugRouteImport.update({
     id: '/learn/$courseSlug/$lessonSlug',
@@ -68,35 +110,56 @@ const LearnCoursesSlugRoute = LearnCoursesSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/email-verified': typeof EmailVerifiedRoute
   '/health': typeof HealthRoute
+  '/reset-password': typeof ResetPasswordRouteWithChildren
+  '/sign-in': typeof SignInRoute
+  '/sign-up': typeof SignUpRoute
+  '/verify': typeof VerifyRoute
   '/learn/bookmarks': typeof LearnBookmarksRoute
   '/learn/my-learning': typeof LearnMyLearningRoute
   '/learn/progress': typeof LearnProgressRoute
   '/learn/sample': typeof LearnSampleRoute
+  '/reset-password/$token': typeof ResetPasswordTokenRoute
   '/learn/': typeof LearnIndexRoute
+  '/api/auth/$': typeof ApiAuthSplatRoute
   '/learn/$courseSlug/$lessonSlug': typeof LearnCourseSlugLessonSlugRoute
   '/learn/courses/$slug': typeof LearnCoursesSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/email-verified': typeof EmailVerifiedRoute
   '/health': typeof HealthRoute
+  '/reset-password': typeof ResetPasswordRouteWithChildren
+  '/sign-in': typeof SignInRoute
+  '/sign-up': typeof SignUpRoute
+  '/verify': typeof VerifyRoute
   '/learn/bookmarks': typeof LearnBookmarksRoute
   '/learn/my-learning': typeof LearnMyLearningRoute
   '/learn/progress': typeof LearnProgressRoute
   '/learn/sample': typeof LearnSampleRoute
+  '/reset-password/$token': typeof ResetPasswordTokenRoute
   '/learn': typeof LearnIndexRoute
+  '/api/auth/$': typeof ApiAuthSplatRoute
   '/learn/$courseSlug/$lessonSlug': typeof LearnCourseSlugLessonSlugRoute
   '/learn/courses/$slug': typeof LearnCoursesSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/email-verified': typeof EmailVerifiedRoute
   '/health': typeof HealthRoute
+  '/reset-password': typeof ResetPasswordRouteWithChildren
+  '/sign-in': typeof SignInRoute
+  '/sign-up': typeof SignUpRoute
+  '/verify': typeof VerifyRoute
   '/learn/bookmarks': typeof LearnBookmarksRoute
   '/learn/my-learning': typeof LearnMyLearningRoute
   '/learn/progress': typeof LearnProgressRoute
   '/learn/sample': typeof LearnSampleRoute
+  '/reset-password/$token': typeof ResetPasswordTokenRoute
   '/learn/': typeof LearnIndexRoute
+  '/api/auth/$': typeof ApiAuthSplatRoute
   '/learn/$courseSlug/$lessonSlug': typeof LearnCourseSlugLessonSlugRoute
   '/learn/courses/$slug': typeof LearnCoursesSlugRoute
 }
@@ -104,46 +167,73 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/email-verified'
     | '/health'
+    | '/reset-password'
+    | '/sign-in'
+    | '/sign-up'
+    | '/verify'
     | '/learn/bookmarks'
     | '/learn/my-learning'
     | '/learn/progress'
     | '/learn/sample'
+    | '/reset-password/$token'
     | '/learn/'
+    | '/api/auth/$'
     | '/learn/$courseSlug/$lessonSlug'
     | '/learn/courses/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/email-verified'
     | '/health'
+    | '/reset-password'
+    | '/sign-in'
+    | '/sign-up'
+    | '/verify'
     | '/learn/bookmarks'
     | '/learn/my-learning'
     | '/learn/progress'
     | '/learn/sample'
+    | '/reset-password/$token'
     | '/learn'
+    | '/api/auth/$'
     | '/learn/$courseSlug/$lessonSlug'
     | '/learn/courses/$slug'
   id:
     | '__root__'
     | '/'
+    | '/email-verified'
     | '/health'
+    | '/reset-password'
+    | '/sign-in'
+    | '/sign-up'
+    | '/verify'
     | '/learn/bookmarks'
     | '/learn/my-learning'
     | '/learn/progress'
     | '/learn/sample'
+    | '/reset-password/$token'
     | '/learn/'
+    | '/api/auth/$'
     | '/learn/$courseSlug/$lessonSlug'
     | '/learn/courses/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  EmailVerifiedRoute: typeof EmailVerifiedRoute
   HealthRoute: typeof HealthRoute
+  ResetPasswordRoute: typeof ResetPasswordRouteWithChildren
+  SignInRoute: typeof SignInRoute
+  SignUpRoute: typeof SignUpRoute
+  VerifyRoute: typeof VerifyRoute
   LearnBookmarksRoute: typeof LearnBookmarksRoute
   LearnMyLearningRoute: typeof LearnMyLearningRoute
   LearnProgressRoute: typeof LearnProgressRoute
   LearnSampleRoute: typeof LearnSampleRoute
   LearnIndexRoute: typeof LearnIndexRoute
+  ApiAuthSplatRoute: typeof ApiAuthSplatRoute
   LearnCourseSlugLessonSlugRoute: typeof LearnCourseSlugLessonSlugRoute
   LearnCoursesSlugRoute: typeof LearnCoursesSlugRoute
 }
@@ -157,11 +247,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/email-verified': {
+      id: '/email-verified'
+      path: '/email-verified'
+      fullPath: '/email-verified'
+      preLoaderRoute: typeof EmailVerifiedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/health': {
       id: '/health'
       path: '/health'
       fullPath: '/health'
       preLoaderRoute: typeof HealthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sign-in': {
+      id: '/sign-in'
+      path: '/sign-in'
+      fullPath: '/sign-in'
+      preLoaderRoute: typeof SignInRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sign-up': {
+      id: '/sign-up'
+      path: '/sign-up'
+      fullPath: '/sign-up'
+      preLoaderRoute: typeof SignUpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/verify': {
+      id: '/verify'
+      path: '/verify'
+      fullPath: '/verify'
+      preLoaderRoute: typeof VerifyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/learn/': {
@@ -199,6 +324,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LearnSampleRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reset-password/$token': {
+      id: '/reset-password/$token'
+      path: '/$token'
+      fullPath: '/reset-password/$token'
+      preLoaderRoute: typeof ResetPasswordTokenRouteImport
+      parentRoute: typeof ResetPasswordRoute
+    }
+    '/api/auth/$': {
+      id: '/api/auth/$'
+      path: '/api/auth/$'
+      fullPath: '/api/auth/$'
+      preLoaderRoute: typeof ApiAuthSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/learn/$courseSlug/$lessonSlug': {
       id: '/learn/$courseSlug/$lessonSlug'
       path: '/learn/$courseSlug/$lessonSlug'
@@ -216,14 +355,32 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface ResetPasswordRouteChildren {
+  ResetPasswordTokenRoute: typeof ResetPasswordTokenRoute
+}
+
+const ResetPasswordRouteChildren: ResetPasswordRouteChildren = {
+  ResetPasswordTokenRoute: ResetPasswordTokenRoute,
+}
+
+const ResetPasswordRouteWithChildren = ResetPasswordRoute._addFileChildren(
+  ResetPasswordRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  EmailVerifiedRoute: EmailVerifiedRoute,
   HealthRoute: HealthRoute,
+  ResetPasswordRoute: ResetPasswordRouteWithChildren,
+  SignInRoute: SignInRoute,
+  SignUpRoute: SignUpRoute,
+  VerifyRoute: VerifyRoute,
   LearnBookmarksRoute: LearnBookmarksRoute,
   LearnMyLearningRoute: LearnMyLearningRoute,
   LearnProgressRoute: LearnProgressRoute,
   LearnSampleRoute: LearnSampleRoute,
   LearnIndexRoute: LearnIndexRoute,
+  ApiAuthSplatRoute: ApiAuthSplatRoute,
   LearnCourseSlugLessonSlugRoute: LearnCourseSlugLessonSlugRoute,
   LearnCoursesSlugRoute: LearnCoursesSlugRoute,
 }

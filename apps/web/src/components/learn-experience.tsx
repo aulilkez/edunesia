@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import {
   ArrowLeft,
   ArrowRight,
@@ -32,6 +32,7 @@ import {
 import type { MDXComponents } from "mdx/types";
 import { useEffect, useMemo, useState } from "react";
 
+import { authClient } from "@edunesia/auth/client";
 import { mdxComponents } from "@edunesia/content/components";
 import {
   Accordion,
@@ -501,6 +502,7 @@ export function LearnHeader({ app = false }: { app?: boolean }) {
 }
 
 export function LearnAppFrame({ children, active }: { children: React.ReactNode; active: string }) {
+  const navigate = useNavigate();
   const learnerLinks = [
     { label: "My learning", href: "/learn/my-learning" },
     { label: "Bookmarks", href: "/learn/bookmarks" },
@@ -510,6 +512,18 @@ export function LearnAppFrame({ children, active }: { children: React.ReactNode;
   return (
     <div className="min-h-svh bg-background text-foreground">
       <LearnHeader app />
+      <div className="mx-auto flex max-w-[1440px] justify-end border-b px-4 py-2 sm:px-7 lg:px-9">
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={async () => {
+            await authClient.signOut();
+            await navigate({ to: "/" });
+          }}
+        >
+          Sign out
+        </Button>
+      </div>
       <div className="mx-auto grid max-w-[1440px] lg:grid-cols-[224px_minmax(0,1fr)]">
         <aside className="hidden min-h-[calc(100svh-4rem)] border-r px-4 py-6 lg:block">
           <p className="px-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">

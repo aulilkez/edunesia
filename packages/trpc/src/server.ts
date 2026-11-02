@@ -52,7 +52,8 @@ export function createTRPC(isProduction = false) {
 
   const publicProcedure = t.procedure;
   const protectedProcedure = publicProcedure.use(({ ctx, next }) => {
-    if (!ctx.user || !ctx.session) throw new TRPCError({ code: "UNAUTHORIZED" });
+    if (!ctx.user || !ctx.session || !ctx.user.emailVerified)
+      throw new TRPCError({ code: "UNAUTHORIZED" });
     return next({ ctx: { ...ctx, user: ctx.user, session: ctx.session } });
   });
 

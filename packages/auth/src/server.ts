@@ -3,25 +3,45 @@ import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { APIError, createAuthMiddleware } from "better-auth/api";
 
 import type { Database } from "@edunesia/database";
-import { accounts, sessions, users, verifications } from "@edunesia/database/schema";
+import { accounts, rateLimits, sessions, users, verifications } from "@edunesia/database/schema";
 import type { ServerEnv } from "@edunesia/env/server";
 import { serverEnv } from "@edunesia/env/server";
 
+import { createAuthEmailCallbacks } from "./email/callbacks";
+import { createEmailProvider } from "./email/provider";
 import { LEGAL_DOCUMENTS_AVAILABLE, signUpAuthSchema } from "./schemas";
 
 export function createAuth(database: Database, env: ServerEnv = serverEnv) {
+  const emailCallbacks = createAuthEmailCallbacks(createEmailProvider(env));
   return betterAuth({
     baseURL: env.BETTER_AUTH_URL,
     secret: env.BETTER_AUTH_SECRET,
     database: drizzleAdapter(database, {
       provider: "pg",
-      schema: { user: users, session: sessions, account: accounts, verification: verifications },
+      schema: {
+        user: users,
+        session: sessions,
+        account: accounts,
+        verification: verifications,
+        rateLimit: rateLimits,
+      },
     }),
     emailAndPassword: {
       enabled: true,
+      requireEmailVerification: true,
+      revokeSessionsOnPasswordReset: true,
+      resetPasswordTokenExpiresIn: 60 * 30,
       minPasswordLength: 12,
       maxPasswordLength: 128,
       autoSignIn: true,
+      sendResetPassword: emailCallbacks.sendResetPassword,
+    },
+    emailVerification: {
+      sendOnSignUp: true,
+      sendOnSignIn: true,
+      expiresIn: 60 * 60,
+      autoSignInAfterVerification: true,
+      sendVerificationEmail: emailCallbacks.sendVerificationEmail,
     },
     socialProviders: {
       ...(env.GOOGLE_CLIENT_ID && env.GOOGLE_CLIENT_SECRET
@@ -76,7 +96,22 @@ export function createAuth(database: Database, env: ServerEnv = serverEnv) {
         },
       },
     },
-    trustedOrigins: [env.BETTER_AUTH_URL],
+    trustedOrigins: [env.BETTER_AUTH_URL, ...(env.VITE_APP_URL ? [env.VITE_APP_URL] : [])],
+    advanced: {
+      useSecureCookies: env.BETTER_AUTH_URL.startsWith("https://"),
+    },
+    rateLimit: {
+      enabled: true,
+      window: 60,
+      max: 100,
+      storage: "database",
+      customRules: {
+        "/sign-in/email": { window: 60, max: 10 },
+        "/sign-up/email": { window: 60, max: 5 },
+        "/request-password-reset": { window: 60, max: 3 },
+        "/send-verification-email": { window: 60, max: 3 },
+      },
+    },
   });
 }
 

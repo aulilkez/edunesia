@@ -7,6 +7,8 @@ export const messages: Messages = {
   "app.health.loading": "サービスを確認中…",
   "app.health.ok": "稼働中",
   "app.health.error": "確認が必要です",
+  "auth.securityNote": "アカウントは暗号化された安全なセッションで保護されています。",
+  "auth.verified.body": "メールアドレスが確認されました。",
   "landing.eyebrow": "すべての人に開かれた学び",
   "landing.headlineLead": "知識は",
   "landing.headlineEmphasis": "すべての人に開かれるべきです。",

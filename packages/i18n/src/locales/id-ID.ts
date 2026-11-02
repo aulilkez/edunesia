@@ -7,6 +7,8 @@ export const messages: Messages = {
   "app.health.loading": "Memeriksa layanan…",
   "app.health.ok": "Berjalan",
   "app.health.error": "Perlu diperiksa",
+  "auth.securityNote": "Akun Anda dilindungi dengan sesi terenkripsi yang aman.",
+  "auth.verified.body": "Alamat email Anda telah diverifikasi.",
   "landing.eyebrow": "PENDIDIKAN TERBUKA UNTUK SEMUA",
   "landing.headlineLead": "Pengetahuan Harus",
   "landing.headlineEmphasis": "Terbuka untuk Semua.",
