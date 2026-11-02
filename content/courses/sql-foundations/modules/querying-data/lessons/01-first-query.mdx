@@ -1,0 +1,34 @@
+---
+title: Write Your First SQL Query
+description: Choose columns from a table and filter the result.
+slug: first-sql-query
+difficulty: beginner
+estimatedTime: 8
+order: 0
+learningObjectives:
+  - Select named columns from a table.
+  - Filter rows with a WHERE condition.
+prerequisites: []
+contentSource: git
+version: 1
+---
+
+# Write Your First SQL Query
+
+SQL describes operations on relational data. A `SELECT` query names the columns to return and the table to read:
+
+```sql
+SELECT name, category
+FROM products
+WHERE category = 'Books'
+ORDER BY name;
+```
+
+The database evaluates the query against a table named `products`. `WHERE` keeps rows that meet a condition, and `ORDER BY` sorts the result. Column names and table names must match the database schema.
+
+<Callout type="warning">
+  The table and rows here are an example schema. A query only runs when those names exist in the
+  database you are using.
+</Callout>
+
+Try removing the `WHERE` line and compare which rows the query asks the database to return.

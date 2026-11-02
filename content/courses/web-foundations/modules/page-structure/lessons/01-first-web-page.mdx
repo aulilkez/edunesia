@@ -1,0 +1,52 @@
+---
+title: Build Your First Web Page
+description: Give a page a document structure and a readable heading.
+slug: first-web-page
+difficulty: beginner
+estimatedTime: 9
+order: 0
+learningObjectives:
+  - Identify the main parts of a basic HTML document.
+  - Connect a CSS stylesheet to an HTML file.
+prerequisites: []
+contentSource: git
+version: 1
+---
+
+# Build Your First Web Page
+
+HTML describes the content and structure of a page. A minimal document can give its content a language, a title, and a main heading:
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Field Notes</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Field Notes</h1>
+      <p>A place to collect observations.</p>
+    </main>
+  </body>
+</html>
+```
+
+CSS controls presentation. In `styles.css`, a rule can set the text color and reading width:
+
+```css
+body {
+  color: #20242b;
+  font-family: system-ui, sans-serif;
+  max-width: 65ch;
+  margin: 3rem auto;
+}
+```
+
+<Callout type="info">
+  Prefer elements that describe their purpose, such as `main`, `nav`, and `article`. Clear structure
+  helps browsers, assistive technology, and other developers understand the page.
+</Callout>

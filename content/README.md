@@ -11,7 +11,7 @@ content/
 └── courses/    Courses, ordered modules, and lesson MDX
 ```
 
-The sample courses are `courses/javascript-foundations` and `courses/mathematics-foundations`. Their `course.yaml` files describe each course, each `module.yaml` describes one module, and files under `lessons/` contain lesson frontmatter and teaching content. The mathematics lesson is available at `/learn/sample` and is linked from the landing page. The same course, module, and lesson metadata contracts are exported from `@edunesia/content` as Zod schemas and TypeScript types.
+The public learning catalog includes courses in programming languages, web foundations, SQL, mathematics, spreadsheets, word processing, and presentations. Each course has a `course.yaml`, each module has a `module.yaml`, and files under `lessons/` contain validated frontmatter and teaching content. Published repository lessons appear in the catalog and public lesson routes. The same course, module, and lesson metadata contracts are exported from `@edunesia/content` as Zod schemas and TypeScript types.
 
 ## Content Hierarchy
 

@@ -1,0 +1,33 @@
+---
+title: Your First Rust Program
+description: Read the main function and print a line in Rust.
+slug: first-rust-program
+difficulty: beginner
+estimatedTime: 8
+order: 0
+learningObjectives:
+  - Recognize the main function as a Rust program entry point.
+  - Use println! to display text.
+prerequisites: []
+contentSource: git
+version: 1
+---
+
+# Your First Rust Program
+
+The `main` function is where a command-line Rust program begins:
+
+```rust
+fn main() {
+    println!("Hello, Edunesia!");
+}
+```
+
+`println!` is a macro that writes formatted text and a newline. The exclamation mark is part of the macro call syntax. The semicolon ends the statement.
+
+<Callout type="info">
+  With Rust installed, `rustc main.rs` compiles this file into an executable. Cargo provides a
+  project workflow for larger programs.
+</Callout>
+
+Rust also checks many mistakes before a program runs. Later lessons can build from this entry point into values, functions, and ownership.

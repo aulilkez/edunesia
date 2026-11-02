@@ -1,0 +1,35 @@
+---
+title: Your First Java Program
+description: Read and run a small Java program.
+slug: first-java-program
+difficulty: beginner
+estimatedTime: 8
+order: 0
+learningObjectives:
+  - Identify the entry point of a small Java program.
+  - Print a line of text with System.out.println.
+prerequisites: []
+contentSource: git
+version: 1
+---
+
+# Your First Java Program
+
+Java programs begin in a class. The runtime calls the `main` method to start the program:
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello, Edunesia!");
+    }
+}
+```
+
+`System.out.println` writes text followed by a line break. In a basic command-line project, save this file as `Main.java`, compile it with `javac Main.java`, then run the generated class with `java Main`.
+
+<Callout type="info">
+  Java uses braces to mark blocks. The braces around `main` keep its statements together, and the
+  braces around `Main` contain the class declaration.
+</Callout>
+
+The `String[] args` parameter gives a program access to command-line arguments. This example does not need any arguments, but the method signature is still part of the standard entry point.

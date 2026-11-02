@@ -1,0 +1,37 @@
+---
+title: Write Your First Excel Formulas
+description: Use cell references and SUM to calculate a total.
+slug: first-excel-formulas
+difficulty: beginner
+estimatedTime: 8
+order: 0
+learningObjectives:
+  - Write a formula that refers to worksheet cells.
+  - Add a range with the SUM function.
+prerequisites: []
+contentSource: git
+version: 1
+---
+
+# Write Your First Excel Formulas
+
+Every Excel formula begins with an equals sign. If cells `B2` through `B5` contain numbers, this formula adds them:
+
+```text
+=SUM(B2:B5)
+```
+
+The colon in `B2:B5` means the rectangular range from the first cell to the last. You can also refer to a single cell, such as `=B2*1.1` to multiply its value by 1.1.
+
+<Callout type="info">
+  When you copy a formula, a relative reference such as `B2` adjusts to the new position. A dollar
+  sign locks a row or column, as in `$B$2`.
+</Callout>
+
+| Formula           | What it calculates               |
+| ----------------- | -------------------------------- |
+| `=SUM(B2:B5)`     | Adds every value in the range    |
+| `=AVERAGE(B2:B5)` | Calculates the mean of the range |
+| `=COUNT(B2:B5)`   | Counts cells containing numbers  |
+
+Use a clear header row and keep one kind of value in each column. That makes formulas easier to check and data easier to sort or filter.

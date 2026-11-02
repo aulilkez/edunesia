@@ -1,0 +1,37 @@
+---
+title: Your First Go Program
+description: Use a package, import, and function to print a message.
+slug: first-go-program
+difficulty: beginner
+estimatedTime: 8
+order: 0
+learningObjectives:
+  - Explain the role of package main and func main.
+  - Print text with the fmt package.
+prerequisites: []
+contentSource: git
+version: 1
+---
+
+# Your First Go Program
+
+A small Go command-line program declares its package, imports what it uses, and starts in `main`:
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Hello, Edunesia!")
+}
+```
+
+`fmt` is a standard-library package for formatted input and output. The import makes the package available under the name `fmt`, and `fmt.Println` writes a line to standard output.
+
+<Callout type="info">
+  Go's formatter is part of its everyday workflow. Running `gofmt` on source files applies the
+  language's standard formatting rules.
+</Callout>
+
+Save this as `main.go`. With Go installed, run it from the same directory using `go run main.go`.

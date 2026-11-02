@@ -11,7 +11,13 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as HealthRouteImport } from './routes/health'
+import { Route as LearnIndexRouteImport } from './routes/learn.index'
+import { Route as LearnBookmarksRouteImport } from './routes/learn.bookmarks'
+import { Route as LearnMyLearningRouteImport } from './routes/learn.my-learning'
+import { Route as LearnProgressRouteImport } from './routes/learn.progress'
 import { Route as LearnSampleRouteImport } from './routes/learn.sample'
+import { Route as LearnCourseSlugLessonSlugRouteImport } from './routes/learn.$courseSlug.$lessonSlug'
+import { Route as LearnCoursesSlugRouteImport } from './routes/learn.courses.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -23,40 +29,123 @@ const HealthRoute = HealthRouteImport.update({
   path: '/health',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LearnIndexRoute = LearnIndexRouteImport.update({
+  id: '/learn/',
+  path: '/learn/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LearnBookmarksRoute = LearnBookmarksRouteImport.update({
+  id: '/learn/bookmarks',
+  path: '/learn/bookmarks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LearnMyLearningRoute = LearnMyLearningRouteImport.update({
+  id: '/learn/my-learning',
+  path: '/learn/my-learning',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LearnProgressRoute = LearnProgressRouteImport.update({
+  id: '/learn/progress',
+  path: '/learn/progress',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LearnSampleRoute = LearnSampleRouteImport.update({
   id: '/learn/sample',
   path: '/learn/sample',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LearnCourseSlugLessonSlugRoute =
+  LearnCourseSlugLessonSlugRouteImport.update({
+    id: '/learn/$courseSlug/$lessonSlug',
+    path: '/learn/$courseSlug/$lessonSlug',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const LearnCoursesSlugRoute = LearnCoursesSlugRouteImport.update({
+  id: '/learn/courses/$slug',
+  path: '/learn/courses/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/health': typeof HealthRoute
+  '/learn/bookmarks': typeof LearnBookmarksRoute
+  '/learn/my-learning': typeof LearnMyLearningRoute
+  '/learn/progress': typeof LearnProgressRoute
   '/learn/sample': typeof LearnSampleRoute
+  '/learn/': typeof LearnIndexRoute
+  '/learn/$courseSlug/$lessonSlug': typeof LearnCourseSlugLessonSlugRoute
+  '/learn/courses/$slug': typeof LearnCoursesSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/health': typeof HealthRoute
+  '/learn/bookmarks': typeof LearnBookmarksRoute
+  '/learn/my-learning': typeof LearnMyLearningRoute
+  '/learn/progress': typeof LearnProgressRoute
   '/learn/sample': typeof LearnSampleRoute
+  '/learn': typeof LearnIndexRoute
+  '/learn/$courseSlug/$lessonSlug': typeof LearnCourseSlugLessonSlugRoute
+  '/learn/courses/$slug': typeof LearnCoursesSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/health': typeof HealthRoute
+  '/learn/bookmarks': typeof LearnBookmarksRoute
+  '/learn/my-learning': typeof LearnMyLearningRoute
+  '/learn/progress': typeof LearnProgressRoute
   '/learn/sample': typeof LearnSampleRoute
+  '/learn/': typeof LearnIndexRoute
+  '/learn/$courseSlug/$lessonSlug': typeof LearnCourseSlugLessonSlugRoute
+  '/learn/courses/$slug': typeof LearnCoursesSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/health' | '/learn/sample'
+  fullPaths:
+    | '/'
+    | '/health'
+    | '/learn/bookmarks'
+    | '/learn/my-learning'
+    | '/learn/progress'
+    | '/learn/sample'
+    | '/learn/'
+    | '/learn/$courseSlug/$lessonSlug'
+    | '/learn/courses/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/health' | '/learn/sample'
-  id: '__root__' | '/' | '/health' | '/learn/sample'
+  to:
+    | '/'
+    | '/health'
+    | '/learn/bookmarks'
+    | '/learn/my-learning'
+    | '/learn/progress'
+    | '/learn/sample'
+    | '/learn'
+    | '/learn/$courseSlug/$lessonSlug'
+    | '/learn/courses/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/health'
+    | '/learn/bookmarks'
+    | '/learn/my-learning'
+    | '/learn/progress'
+    | '/learn/sample'
+    | '/learn/'
+    | '/learn/$courseSlug/$lessonSlug'
+    | '/learn/courses/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   HealthRoute: typeof HealthRoute
+  LearnBookmarksRoute: typeof LearnBookmarksRoute
+  LearnMyLearningRoute: typeof LearnMyLearningRoute
+  LearnProgressRoute: typeof LearnProgressRoute
   LearnSampleRoute: typeof LearnSampleRoute
+  LearnIndexRoute: typeof LearnIndexRoute
+  LearnCourseSlugLessonSlugRoute: typeof LearnCourseSlugLessonSlugRoute
+  LearnCoursesSlugRoute: typeof LearnCoursesSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -75,11 +164,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HealthRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/learn/': {
+      id: '/learn/'
+      path: '/learn'
+      fullPath: '/learn/'
+      preLoaderRoute: typeof LearnIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/learn/bookmarks': {
+      id: '/learn/bookmarks'
+      path: '/learn/bookmarks'
+      fullPath: '/learn/bookmarks'
+      preLoaderRoute: typeof LearnBookmarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/learn/my-learning': {
+      id: '/learn/my-learning'
+      path: '/learn/my-learning'
+      fullPath: '/learn/my-learning'
+      preLoaderRoute: typeof LearnMyLearningRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/learn/progress': {
+      id: '/learn/progress'
+      path: '/learn/progress'
+      fullPath: '/learn/progress'
+      preLoaderRoute: typeof LearnProgressRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/learn/sample': {
       id: '/learn/sample'
       path: '/learn/sample'
       fullPath: '/learn/sample'
       preLoaderRoute: typeof LearnSampleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/learn/$courseSlug/$lessonSlug': {
+      id: '/learn/$courseSlug/$lessonSlug'
+      path: '/learn/$courseSlug/$lessonSlug'
+      fullPath: '/learn/$courseSlug/$lessonSlug'
+      preLoaderRoute: typeof LearnCourseSlugLessonSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/learn/courses/$slug': {
+      id: '/learn/courses/$slug'
+      path: '/learn/courses/$slug'
+      fullPath: '/learn/courses/$slug'
+      preLoaderRoute: typeof LearnCoursesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -88,7 +219,13 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   HealthRoute: HealthRoute,
+  LearnBookmarksRoute: LearnBookmarksRoute,
+  LearnMyLearningRoute: LearnMyLearningRoute,
+  LearnProgressRoute: LearnProgressRoute,
   LearnSampleRoute: LearnSampleRoute,
+  LearnIndexRoute: LearnIndexRoute,
+  LearnCourseSlugLessonSlugRoute: LearnCourseSlugLessonSlugRoute,
+  LearnCoursesSlugRoute: LearnCoursesSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

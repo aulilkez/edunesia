@@ -167,10 +167,10 @@ function HomePage() {
 function StartLearningButton({ label, className = "" }: { label: string; className?: string }) {
   return (
     <Button asChild size="lg" className={`h-11 rounded-full px-4 text-sm sm:px-5 ${className}`}>
-      <a href="#learning-preview">
+      <Link to="/learn">
         {label}
         <ArrowRight aria-hidden="true" />
-      </a>
+      </Link>
     </Button>
   );
 }
