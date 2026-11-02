@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 import { Button } from "@edunesia/ui/components/button";
 
-import { getStoredTheme, useAppThemeStore } from "../stores/app-theme.store";
+import { getStoredTheme, useAppThemeStore } from "../../stores/app-theme.store";
 
 export function ThemeSwitch() {
   const { i18n } = useLingui();

@@ -1,7 +1,6 @@
 import { useLingui } from "@lingui/react";
 import { useForm } from "@tanstack/react-form";
 import { Link, useNavigate, useParams, useSearch } from "@tanstack/react-router";
-import { Eye, EyeOff } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { authClient } from "@edunesia/auth/client";
@@ -13,109 +12,9 @@ import {
   signUpFormSchema,
 } from "@edunesia/auth/schemas";
 import { Button } from "@edunesia/ui/components/button";
-import { Card, CardContent, CardDescription, CardHeader } from "@edunesia/ui/components/card";
-import { Input } from "@edunesia/ui/components/input";
-import { Label } from "@edunesia/ui/components/label";
 
-type AuthMode = "sign-in" | "sign-up" | "forgot" | "reset" | "verify" | "verified";
-
-const copy: Record<AuthMode, { title: string; description: string }> = {
-  "sign-in": { title: "Welcome back", description: "Sign in to continue learning." },
-  "sign-up": { title: "Create your account", description: "Join a global community of learners." },
-  forgot: {
-    title: "Reset your password",
-    description: "We’ll send a reset link if an account matches.",
-  },
-  reset: { title: "Choose a new password", description: "Use at least 12 characters." },
-  verify: {
-    title: "Check your email",
-    description: "We’ll send a fresh verification link if your account needs one.",
-  },
-  verified: { title: "Email verified", description: "Your account is ready for learning." },
-};
-
-function AuthFrame({ mode, children }: { mode: AuthMode; children: React.ReactNode }) {
-  const { i18n } = useLingui();
-  return (
-    <main className="flex min-h-svh items-center justify-center bg-muted/30 px-4 py-10">
-      <div className="w-full max-w-md">
-        <Link to="/" className="mb-6 flex justify-center text-lg font-semibold tracking-tight">
-          Edunesia
-        </Link>
-        <Card className="shadow-sm">
-          <CardHeader>
-            <h1 className="text-xl font-semibold tracking-tight">{copy[mode].title}</h1>
-            <CardDescription>{copy[mode].description}</CardDescription>
-          </CardHeader>
-          <CardContent>{children}</CardContent>
-        </Card>
-        <p className="mt-5 text-center text-xs text-muted-foreground">
-          {i18n._({
-            id: "auth.securityNote",
-            message: "Your account is protected with secure, encrypted sessions.",
-          })}
-        </p>
-      </div>
-    </main>
-  );
-}
-
-function Status({ value, error = false }: { value: string; error?: boolean }) {
-  return value ? (
-    <p
-      className={`text-sm ${error ? "text-destructive" : "text-muted-foreground"}`}
-      role={error ? "alert" : "status"}
-    >
-      {value}
-    </p>
-  ) : null;
-}
-
-function Field({
-  id,
-  label,
-  type = "text",
-  value,
-  onChange,
-  autoComplete,
-}: {
-  id: string;
-  label: string;
-  type?: string;
-  value: string;
-  onChange: (value: string) => void;
-  autoComplete?: string;
-}) {
-  const [visible, setVisible] = useState(false);
-  const password = type === "password";
-  return (
-    <div className="grid gap-2">
-      <Label htmlFor={id}>{label}</Label>
-      <div className="relative">
-        <Input
-          id={id}
-          type={password && visible ? "text" : type}
-          value={value}
-          autoComplete={autoComplete}
-          onChange={(event) => onChange(event.target.value)}
-          required
-          className={password ? "pr-10" : undefined}
-        />
-        {password ? (
-          <button
-            type="button"
-            aria-label={visible ? "Hide password" : "Show password"}
-            onClick={() => setVisible(!visible)}
-            className="absolute inset-y-0 right-0 flex w-10 items-center justify-center text-muted-foreground"
-          >
-            <Eye className={visible ? "hidden" : "size-4"} />
-            <EyeOff className={visible ? "size-4" : "hidden"} />
-          </button>
-        ) : null}
-      </div>
-    </div>
-  );
-}
+import { AuthField, AuthFrame, AuthStatus } from "./auth-layout";
+import { PasswordStrength } from "./password-strength";
 
 function useInternalCallback() {
   const search = useSearch({ strict: false }) as { redirect?: string };
@@ -158,7 +57,7 @@ export function SignInPage() {
       >
         <form.Field name="email">
           {(field) => (
-            <Field
+            <AuthField
               id="sign-in-email"
               label="Email"
               type="email"
@@ -170,7 +69,7 @@ export function SignInPage() {
         </form.Field>
         <form.Field name="password">
           {(field) => (
-            <Field
+            <AuthField
               id="sign-in-password"
               label="Password"
               type="password"
@@ -192,7 +91,7 @@ export function SignInPage() {
             </label>
           )}
         </form.Field>
-        <Status value={error} error />
+        <AuthStatus value={error} error />
         {needsVerification ? (
           <a
             className="text-sm text-primary underline-offset-4 hover:underline"
@@ -270,7 +169,7 @@ export function SignUpPage() {
         ) : null}
         <form.Field name="name">
           {(field) => (
-            <Field
+            <AuthField
               id="signup-name"
               label="Full name"
               autoComplete="name"
@@ -284,7 +183,7 @@ export function SignUpPage() {
         </form.Field>
         <form.Field name="email">
           {(field) => (
-            <Field
+            <AuthField
               id="signup-email"
               label="Email"
               type="email"
@@ -297,7 +196,7 @@ export function SignUpPage() {
         <form.Field name="password">
           {(field) => (
             <>
-              <Field
+              <AuthField
                 id="signup-password"
                 label="Password"
                 type="password"
@@ -311,7 +210,7 @@ export function SignUpPage() {
         </form.Field>
         <form.Field name="confirmPassword">
           {(field) => (
-            <Field
+            <AuthField
               id="signup-confirm-password"
               label="Confirm password"
               type="password"
@@ -334,8 +233,8 @@ export function SignUpPage() {
             </label>
           )}
         </form.Field>
-        <Status value={error} error />
-        <Status value={notice} />
+        <AuthStatus value={error} error />
+        <AuthStatus value={notice} />
         <form.Subscribe selector={(state) => state.isSubmitting}>
           {(busy) => (
             <Button disabled={busy || !LEGAL_DOCUMENTS_AVAILABLE} type="submit">
@@ -351,34 +250,6 @@ export function SignUpPage() {
         </p>
       </form>
     </AuthFrame>
-  );
-}
-
-function PasswordStrength({ value }: { value: string }) {
-  const checks = [
-    value.length >= 12,
-    /[A-Z]/.test(value),
-    /[0-9]/.test(value),
-    /[^A-Za-z0-9]/.test(value),
-  ];
-  const strength = checks.filter(Boolean).length;
-  return (
-    <div
-      aria-label={`Password strength: ${strength} of 4`}
-      className="grid grid-cols-4 gap-1"
-      role="meter"
-      aria-valuemin={0}
-      aria-valuemax={4}
-      aria-valuenow={strength}
-    >
-      {checks.map((_, index) => (
-        <span
-          key={index}
-          className={`h-1 rounded-full ${index < strength ? "bg-primary" : "bg-muted"}`}
-        />
-      ))}
-      <span className="sr-only">{strength < 2 ? "Weak" : strength < 4 ? "Good" : "Strong"}</span>
-    </div>
   );
 }
 
@@ -412,7 +283,7 @@ export function ForgotPasswordPage() {
       >
         <form.Field name="email">
           {(field) => (
-            <Field
+            <AuthField
               id="forgot-email"
               label="Email"
               type="email"
@@ -422,8 +293,8 @@ export function ForgotPasswordPage() {
             />
           )}
         </form.Field>
-        <Status value={error} error />
-        <Status value={notice} />
+        <AuthStatus value={error} error />
+        <AuthStatus value={notice} />
         <form.Subscribe selector={(state) => state.isSubmitting}>
           {(busy) => (
             <Button type="submit" disabled={busy}>
@@ -473,7 +344,7 @@ export function ResetPasswordPage() {
       >
         <form.Field name="password">
           {(field) => (
-            <Field
+            <AuthField
               id="reset-password"
               label="New password"
               type="password"
@@ -485,7 +356,7 @@ export function ResetPasswordPage() {
         </form.Field>
         <form.Field name="confirmPassword">
           {(field) => (
-            <Field
+            <AuthField
               id="reset-confirm"
               label="Confirm password"
               type="password"
@@ -495,7 +366,7 @@ export function ResetPasswordPage() {
             />
           )}
         </form.Field>
-        <Status
+        <AuthStatus
           value={
             search.error === "INVALID_TOKEN"
               ? "This reset link is invalid or expired. Request a new one."
@@ -508,7 +379,7 @@ export function ResetPasswordPage() {
             Request a new reset link
           </Link>
         ) : null}
-        <Status value={notice} />
+        <AuthStatus value={notice} />
         <form.Subscribe selector={(state) => state.isSubmitting}>
           {(busy) => (
             <Button type="submit" disabled={busy || !token || !!notice}>
@@ -556,8 +427,8 @@ export function VerifyEmailPage() {
   return (
     <AuthFrame mode="verify">
       <div className="grid gap-4">
-        <Status value={notice} />
-        <Status value={error} error />
+        <AuthStatus value={notice} />
+        <AuthStatus value={error} error />
         <Button onClick={() => void resend()} disabled={!search.email || busy || cooldown > 0}>
           {busy
             ? "Sending…"

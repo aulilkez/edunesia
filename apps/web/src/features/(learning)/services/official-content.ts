@@ -3,7 +3,7 @@ import type { MDXContent } from "mdx/types";
 type OfficialLessonModule = { default: MDXContent };
 
 const officialLessonLoaders = import.meta.glob<OfficialLessonModule>(
-  "../../../../content/courses/**/*.mdx",
+  "../../../../../../content/courses/**/*.mdx",
 );
 
 export type OfficialLessonPath = keyof typeof officialLessonLoaders;

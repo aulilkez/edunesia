@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { LearnerHome } from "../components/learn-experience";
-import { requireVerifiedLearner } from "../lib/auth-guard";
+import { requireVerifiedLearner } from "../features/(auth)";
+import { LearnerHome } from "../features/(learning)";
 
 export const Route = createFileRoute("/learn/my-learning")({
   beforeLoad: ({ location }) => requireVerifiedLearner(location),

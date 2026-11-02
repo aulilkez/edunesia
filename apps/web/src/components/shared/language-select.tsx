@@ -11,7 +11,7 @@ import {
 } from "@edunesia/ui/components/select";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@edunesia/ui/components/tooltip";
 
-import { setLocalePreference } from "../lib/locale-preferences";
+import { setLocalePreference } from "../../i18n/locale-preferences";
 
 const languageOptions: { value: Locale; label: string; flag: string }[] = [
   { value: "en-US", label: localeDisplayNames["en-US"].nativeLabel, flag: "🇺🇸" },

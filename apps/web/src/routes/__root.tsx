@@ -6,9 +6,9 @@ import { useEffect, useMemo } from "react";
 import { createI18n } from "@edunesia/i18n";
 import { TooltipProvider } from "@edunesia/ui/components/tooltip";
 
-import { NotFoundPage } from "../components/not-found-page";
-import { restoreLocalePreference } from "../lib/locale-preferences";
-import type { loadOfficialLesson } from "../lib/official-content";
+import { NotFoundPage } from "../components/shared/not-found-page";
+import type { loadOfficialLesson } from "../features/(learning)/services/official-content";
+import { restoreLocalePreference } from "../i18n/locale-preferences";
 import "../style.css";
 
 export const Route = createRootRouteWithContext<{

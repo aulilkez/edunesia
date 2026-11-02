@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { CourseDetail, isPublishedCourse } from "../components/learn-experience";
-import { NotFoundPage } from "../components/not-found-page";
+import { NotFoundPage } from "../components/shared/not-found-page";
+import { CourseDetail, isPublishedCourse } from "../features/(learning)";
 
 export const Route = createFileRoute("/learn/courses/$slug")({
   head: ({ params }) => ({

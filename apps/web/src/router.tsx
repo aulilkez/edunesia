@@ -4,7 +4,7 @@ import { setupRouterSsrQueryIntegration } from "@tanstack/react-router-ssr-query
 import { createAPIClient, createQueryClient } from "@edunesia/query";
 import type { AppRouter } from "@edunesia/trpc";
 
-import { loadOfficialLesson } from "./lib/official-content";
+import { loadOfficialLesson } from "./features/(learning)/services/official-content";
 import { getTRPCHeaders, getTRPCUrl, TRPCProvider } from "./lib/trpc";
 import { routeTree } from "./routeTree.gen";
 

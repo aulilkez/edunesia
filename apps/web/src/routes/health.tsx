@@ -15,7 +15,7 @@ import {
   CardTitle,
 } from "@edunesia/ui/components/card";
 
-import { LanguageSelect } from "../components/language-select";
+import { LanguageSelect } from "../components/shared/language-select";
 
 const getHealth = createServerFn({ method: "GET" }).handler(async () => {
   const startedAt = performance.now();

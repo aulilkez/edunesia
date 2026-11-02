@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { SignInPage } from "../components/auth-pages";
-import { redirectSignedInLearner } from "../lib/auth-guard";
+import { redirectSignedInLearner, SignInPage } from "../features/(auth)";
 
 export const Route = createFileRoute("/sign-in")({
   beforeLoad: redirectSignedInLearner,
