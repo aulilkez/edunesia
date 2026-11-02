@@ -16,10 +16,7 @@
     "@edunesia/database": "workspace:*",
     "@edunesia/env": "workspace:*",
     "better-auth": "^1.7.10",
-    "nodemailer": "^7.0.10",
+    "nodemailer": "^10.3.1",
     "zod": "^4.6.7"
-  },
-  "devDependencies": {
-    "@types/nodemailer": "^6.4.19"
   }
 }
