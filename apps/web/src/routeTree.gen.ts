@@ -9,380 +9,423 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as EmailVerifiedRouteImport } from './routes/email-verified'
-import { Route as HealthRouteImport } from './routes/health'
-import { Route as ResetPasswordRouteImport } from './routes/reset-password'
-import { Route as SignInRouteImport } from './routes/sign-in'
-import { Route as SignUpRouteImport } from './routes/sign-up'
-import { Route as VerifyRouteImport } from './routes/verify'
-import { Route as LearnIndexRouteImport } from './routes/learn.index'
-import { Route as LearnBookmarksRouteImport } from './routes/learn.bookmarks'
-import { Route as LearnMyLearningRouteImport } from './routes/learn.my-learning'
-import { Route as LearnProgressRouteImport } from './routes/learn.progress'
-import { Route as LearnSampleRouteImport } from './routes/learn.sample'
-import { Route as ResetPasswordTokenRouteImport } from './routes/reset-password.$token'
-import { Route as ApiAuthSplatRouteImport } from './routes/api.auth.$'
-import { Route as LearnCourseSlugLessonSlugRouteImport } from './routes/learn.$courseSlug.$lessonSlug'
-import { Route as LearnCoursesSlugRouteImport } from './routes/learn.courses.$slug'
+import { Route as authEmailVerifiedRouteImport } from './routes/(auth)/email-verified'
+import { Route as authForgotPasswordRouteImport } from './routes/(auth)/forgot-password'
+import { Route as authOtpRouteImport } from './routes/(auth)/otp'
+import { Route as authResetPasswordRouteImport } from './routes/(auth)/reset-password'
+import { Route as authSignInRouteImport } from './routes/(auth)/sign-in'
+import { Route as authSignUpRouteImport } from './routes/(auth)/sign-up'
+import { Route as authVerifyRouteImport } from './routes/(auth)/verify'
+import { Route as publicIndexRouteImport } from './routes/(public)/index'
+import { Route as systemHealthRouteImport } from './routes/(system)/health'
+import { Route as authResetPasswordTokenRouteImport } from './routes/(auth)/reset-password.$token'
+import { Route as learningLearnIndexRouteImport } from './routes/(learning)/learn.index'
+import { Route as learningLearnBookmarksRouteImport } from './routes/(learning)/learn.bookmarks'
+import { Route as learningLearnMyLearningRouteImport } from './routes/(learning)/learn.my-learning'
+import { Route as learningLearnProgressRouteImport } from './routes/(learning)/learn.progress'
+import { Route as learningLearnSampleRouteImport } from './routes/(learning)/learn.sample'
+import { Route as apiApiAuthSplatRouteImport } from './routes/(api)/api.auth.$'
+import { Route as learningLearnCourseSlugLessonSlugRouteImport } from './routes/(learning)/learn.$courseSlug.$lessonSlug'
+import { Route as learningLearnCoursesSlugRouteImport } from './routes/(learning)/learn.courses.$slug'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EmailVerifiedRoute = EmailVerifiedRouteImport.update({
-  id: '/email-verified',
+const authEmailVerifiedRoute = authEmailVerifiedRouteImport.update({
+  id: '/(auth)/email-verified',
   path: '/email-verified',
   getParentRoute: () => rootRouteImport,
 } as any)
-const HealthRoute = HealthRouteImport.update({
-  id: '/health',
-  path: '/health',
+const authForgotPasswordRoute = authForgotPasswordRouteImport.update({
+  id: '/(auth)/forgot-password',
+  path: '/forgot-password',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ResetPasswordRoute = ResetPasswordRouteImport.update({
-  id: '/reset-password',
+const authOtpRoute = authOtpRouteImport.update({
+  id: '/(auth)/otp',
+  path: '/otp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const authResetPasswordRoute = authResetPasswordRouteImport.update({
+  id: '/(auth)/reset-password',
   path: '/reset-password',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SignInRoute = SignInRouteImport.update({
-  id: '/sign-in',
+const authSignInRoute = authSignInRouteImport.update({
+  id: '/(auth)/sign-in',
   path: '/sign-in',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SignUpRoute = SignUpRouteImport.update({
-  id: '/sign-up',
+const authSignUpRoute = authSignUpRouteImport.update({
+  id: '/(auth)/sign-up',
   path: '/sign-up',
   getParentRoute: () => rootRouteImport,
 } as any)
-const VerifyRoute = VerifyRouteImport.update({
-  id: '/verify',
+const authVerifyRoute = authVerifyRouteImport.update({
+  id: '/(auth)/verify',
   path: '/verify',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LearnIndexRoute = LearnIndexRouteImport.update({
-  id: '/learn/',
+const publicIndexRoute = publicIndexRouteImport.update({
+  id: '/(public)/',
+  path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const systemHealthRoute = systemHealthRouteImport.update({
+  id: '/(system)/health',
+  path: '/health',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const authResetPasswordTokenRoute = authResetPasswordTokenRouteImport.update({
+  id: '/$token',
+  path: '/$token',
+  getParentRoute: () => authResetPasswordRoute,
+} as any)
+const learningLearnIndexRoute = learningLearnIndexRouteImport.update({
+  id: '/(learning)/learn/',
   path: '/learn/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LearnBookmarksRoute = LearnBookmarksRouteImport.update({
-  id: '/learn/bookmarks',
+const learningLearnBookmarksRoute = learningLearnBookmarksRouteImport.update({
+  id: '/(learning)/learn/bookmarks',
   path: '/learn/bookmarks',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LearnMyLearningRoute = LearnMyLearningRouteImport.update({
-  id: '/learn/my-learning',
+const learningLearnMyLearningRoute = learningLearnMyLearningRouteImport.update({
+  id: '/(learning)/learn/my-learning',
   path: '/learn/my-learning',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LearnProgressRoute = LearnProgressRouteImport.update({
-  id: '/learn/progress',
+const learningLearnProgressRoute = learningLearnProgressRouteImport.update({
+  id: '/(learning)/learn/progress',
   path: '/learn/progress',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LearnSampleRoute = LearnSampleRouteImport.update({
-  id: '/learn/sample',
+const learningLearnSampleRoute = learningLearnSampleRouteImport.update({
+  id: '/(learning)/learn/sample',
   path: '/learn/sample',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ResetPasswordTokenRoute = ResetPasswordTokenRouteImport.update({
-  id: '/$token',
-  path: '/$token',
-  getParentRoute: () => ResetPasswordRoute,
-} as any)
-const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
-  id: '/api/auth/$',
+const apiApiAuthSplatRoute = apiApiAuthSplatRouteImport.update({
+  id: '/(api)/api/auth/$',
   path: '/api/auth/$',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LearnCourseSlugLessonSlugRoute =
-  LearnCourseSlugLessonSlugRouteImport.update({
-    id: '/learn/$courseSlug/$lessonSlug',
+const learningLearnCourseSlugLessonSlugRoute =
+  learningLearnCourseSlugLessonSlugRouteImport.update({
+    id: '/(learning)/learn/$courseSlug/$lessonSlug',
     path: '/learn/$courseSlug/$lessonSlug',
     getParentRoute: () => rootRouteImport,
   } as any)
-const LearnCoursesSlugRoute = LearnCoursesSlugRouteImport.update({
-  id: '/learn/courses/$slug',
-  path: '/learn/courses/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
+const learningLearnCoursesSlugRoute =
+  learningLearnCoursesSlugRouteImport.update({
+    id: '/(learning)/learn/courses/$slug',
+    path: '/learn/courses/$slug',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/email-verified': typeof EmailVerifiedRoute
-  '/health': typeof HealthRoute
-  '/reset-password': typeof ResetPasswordRouteWithChildren
-  '/sign-in': typeof SignInRoute
-  '/sign-up': typeof SignUpRoute
-  '/verify': typeof VerifyRoute
-  '/learn/bookmarks': typeof LearnBookmarksRoute
-  '/learn/my-learning': typeof LearnMyLearningRoute
-  '/learn/progress': typeof LearnProgressRoute
-  '/learn/sample': typeof LearnSampleRoute
-  '/reset-password/$token': typeof ResetPasswordTokenRoute
-  '/learn/': typeof LearnIndexRoute
-  '/api/auth/$': typeof ApiAuthSplatRoute
-  '/learn/$courseSlug/$lessonSlug': typeof LearnCourseSlugLessonSlugRoute
-  '/learn/courses/$slug': typeof LearnCoursesSlugRoute
+  '/email-verified': typeof authEmailVerifiedRoute
+  '/forgot-password': typeof authForgotPasswordRoute
+  '/otp': typeof authOtpRoute
+  '/reset-password': typeof authResetPasswordRouteWithChildren
+  '/sign-in': typeof authSignInRoute
+  '/sign-up': typeof authSignUpRoute
+  '/verify': typeof authVerifyRoute
+  '/health': typeof systemHealthRoute
+  '/': typeof publicIndexRoute
+  '/reset-password/$token': typeof authResetPasswordTokenRoute
+  '/learn/bookmarks': typeof learningLearnBookmarksRoute
+  '/learn/my-learning': typeof learningLearnMyLearningRoute
+  '/learn/progress': typeof learningLearnProgressRoute
+  '/learn/sample': typeof learningLearnSampleRoute
+  '/learn/': typeof learningLearnIndexRoute
+  '/api/auth/$': typeof apiApiAuthSplatRoute
+  '/learn/$courseSlug/$lessonSlug': typeof learningLearnCourseSlugLessonSlugRoute
+  '/learn/courses/$slug': typeof learningLearnCoursesSlugRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/email-verified': typeof EmailVerifiedRoute
-  '/health': typeof HealthRoute
-  '/reset-password': typeof ResetPasswordRouteWithChildren
-  '/sign-in': typeof SignInRoute
-  '/sign-up': typeof SignUpRoute
-  '/verify': typeof VerifyRoute
-  '/learn/bookmarks': typeof LearnBookmarksRoute
-  '/learn/my-learning': typeof LearnMyLearningRoute
-  '/learn/progress': typeof LearnProgressRoute
-  '/learn/sample': typeof LearnSampleRoute
-  '/reset-password/$token': typeof ResetPasswordTokenRoute
-  '/learn': typeof LearnIndexRoute
-  '/api/auth/$': typeof ApiAuthSplatRoute
-  '/learn/$courseSlug/$lessonSlug': typeof LearnCourseSlugLessonSlugRoute
-  '/learn/courses/$slug': typeof LearnCoursesSlugRoute
+  '/email-verified': typeof authEmailVerifiedRoute
+  '/forgot-password': typeof authForgotPasswordRoute
+  '/otp': typeof authOtpRoute
+  '/reset-password': typeof authResetPasswordRouteWithChildren
+  '/sign-in': typeof authSignInRoute
+  '/sign-up': typeof authSignUpRoute
+  '/verify': typeof authVerifyRoute
+  '/health': typeof systemHealthRoute
+  '/': typeof publicIndexRoute
+  '/reset-password/$token': typeof authResetPasswordTokenRoute
+  '/learn/bookmarks': typeof learningLearnBookmarksRoute
+  '/learn/my-learning': typeof learningLearnMyLearningRoute
+  '/learn/progress': typeof learningLearnProgressRoute
+  '/learn/sample': typeof learningLearnSampleRoute
+  '/learn': typeof learningLearnIndexRoute
+  '/api/auth/$': typeof apiApiAuthSplatRoute
+  '/learn/$courseSlug/$lessonSlug': typeof learningLearnCourseSlugLessonSlugRoute
+  '/learn/courses/$slug': typeof learningLearnCoursesSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/email-verified': typeof EmailVerifiedRoute
-  '/health': typeof HealthRoute
-  '/reset-password': typeof ResetPasswordRouteWithChildren
-  '/sign-in': typeof SignInRoute
-  '/sign-up': typeof SignUpRoute
-  '/verify': typeof VerifyRoute
-  '/learn/bookmarks': typeof LearnBookmarksRoute
-  '/learn/my-learning': typeof LearnMyLearningRoute
-  '/learn/progress': typeof LearnProgressRoute
-  '/learn/sample': typeof LearnSampleRoute
-  '/reset-password/$token': typeof ResetPasswordTokenRoute
-  '/learn/': typeof LearnIndexRoute
-  '/api/auth/$': typeof ApiAuthSplatRoute
-  '/learn/$courseSlug/$lessonSlug': typeof LearnCourseSlugLessonSlugRoute
-  '/learn/courses/$slug': typeof LearnCoursesSlugRoute
+  '/(auth)/email-verified': typeof authEmailVerifiedRoute
+  '/(auth)/forgot-password': typeof authForgotPasswordRoute
+  '/(auth)/otp': typeof authOtpRoute
+  '/(auth)/reset-password': typeof authResetPasswordRouteWithChildren
+  '/(auth)/sign-in': typeof authSignInRoute
+  '/(auth)/sign-up': typeof authSignUpRoute
+  '/(auth)/verify': typeof authVerifyRoute
+  '/(system)/health': typeof systemHealthRoute
+  '/(public)/': typeof publicIndexRoute
+  '/(auth)/reset-password/$token': typeof authResetPasswordTokenRoute
+  '/(learning)/learn/bookmarks': typeof learningLearnBookmarksRoute
+  '/(learning)/learn/my-learning': typeof learningLearnMyLearningRoute
+  '/(learning)/learn/progress': typeof learningLearnProgressRoute
+  '/(learning)/learn/sample': typeof learningLearnSampleRoute
+  '/(learning)/learn/': typeof learningLearnIndexRoute
+  '/(api)/api/auth/$': typeof apiApiAuthSplatRoute
+  '/(learning)/learn/$courseSlug/$lessonSlug': typeof learningLearnCourseSlugLessonSlugRoute
+  '/(learning)/learn/courses/$slug': typeof learningLearnCoursesSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
     | '/email-verified'
-    | '/health'
+    | '/forgot-password'
+    | '/otp'
     | '/reset-password'
     | '/sign-in'
     | '/sign-up'
     | '/verify'
+    | '/health'
+    | '/'
+    | '/reset-password/$token'
     | '/learn/bookmarks'
     | '/learn/my-learning'
     | '/learn/progress'
     | '/learn/sample'
-    | '/reset-password/$token'
     | '/learn/'
     | '/api/auth/$'
     | '/learn/$courseSlug/$lessonSlug'
     | '/learn/courses/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
     | '/email-verified'
-    | '/health'
+    | '/forgot-password'
+    | '/otp'
     | '/reset-password'
     | '/sign-in'
     | '/sign-up'
     | '/verify'
+    | '/health'
+    | '/'
+    | '/reset-password/$token'
     | '/learn/bookmarks'
     | '/learn/my-learning'
     | '/learn/progress'
     | '/learn/sample'
-    | '/reset-password/$token'
     | '/learn'
     | '/api/auth/$'
     | '/learn/$courseSlug/$lessonSlug'
     | '/learn/courses/$slug'
   id:
     | '__root__'
-    | '/'
-    | '/email-verified'
-    | '/health'
-    | '/reset-password'
-    | '/sign-in'
-    | '/sign-up'
-    | '/verify'
-    | '/learn/bookmarks'
-    | '/learn/my-learning'
-    | '/learn/progress'
-    | '/learn/sample'
-    | '/reset-password/$token'
-    | '/learn/'
-    | '/api/auth/$'
-    | '/learn/$courseSlug/$lessonSlug'
-    | '/learn/courses/$slug'
+    | '/(auth)/email-verified'
+    | '/(auth)/forgot-password'
+    | '/(auth)/otp'
+    | '/(auth)/reset-password'
+    | '/(auth)/sign-in'
+    | '/(auth)/sign-up'
+    | '/(auth)/verify'
+    | '/(system)/health'
+    | '/(public)/'
+    | '/(auth)/reset-password/$token'
+    | '/(learning)/learn/bookmarks'
+    | '/(learning)/learn/my-learning'
+    | '/(learning)/learn/progress'
+    | '/(learning)/learn/sample'
+    | '/(learning)/learn/'
+    | '/(api)/api/auth/$'
+    | '/(learning)/learn/$courseSlug/$lessonSlug'
+    | '/(learning)/learn/courses/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  EmailVerifiedRoute: typeof EmailVerifiedRoute
-  HealthRoute: typeof HealthRoute
-  ResetPasswordRoute: typeof ResetPasswordRouteWithChildren
-  SignInRoute: typeof SignInRoute
-  SignUpRoute: typeof SignUpRoute
-  VerifyRoute: typeof VerifyRoute
-  LearnBookmarksRoute: typeof LearnBookmarksRoute
-  LearnMyLearningRoute: typeof LearnMyLearningRoute
-  LearnProgressRoute: typeof LearnProgressRoute
-  LearnSampleRoute: typeof LearnSampleRoute
-  LearnIndexRoute: typeof LearnIndexRoute
-  ApiAuthSplatRoute: typeof ApiAuthSplatRoute
-  LearnCourseSlugLessonSlugRoute: typeof LearnCourseSlugLessonSlugRoute
-  LearnCoursesSlugRoute: typeof LearnCoursesSlugRoute
+  authEmailVerifiedRoute: typeof authEmailVerifiedRoute
+  authForgotPasswordRoute: typeof authForgotPasswordRoute
+  authOtpRoute: typeof authOtpRoute
+  authResetPasswordRoute: typeof authResetPasswordRouteWithChildren
+  authSignInRoute: typeof authSignInRoute
+  authSignUpRoute: typeof authSignUpRoute
+  authVerifyRoute: typeof authVerifyRoute
+  systemHealthRoute: typeof systemHealthRoute
+  publicIndexRoute: typeof publicIndexRoute
+  learningLearnBookmarksRoute: typeof learningLearnBookmarksRoute
+  learningLearnMyLearningRoute: typeof learningLearnMyLearningRoute
+  learningLearnProgressRoute: typeof learningLearnProgressRoute
+  learningLearnSampleRoute: typeof learningLearnSampleRoute
+  learningLearnIndexRoute: typeof learningLearnIndexRoute
+  apiApiAuthSplatRoute: typeof apiApiAuthSplatRoute
+  learningLearnCourseSlugLessonSlugRoute: typeof learningLearnCourseSlugLessonSlugRoute
+  learningLearnCoursesSlugRoute: typeof learningLearnCoursesSlugRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/email-verified': {
-      id: '/email-verified'
+    '/(auth)/email-verified': {
+      id: '/(auth)/email-verified'
       path: '/email-verified'
       fullPath: '/email-verified'
-      preLoaderRoute: typeof EmailVerifiedRouteImport
+      preLoaderRoute: typeof authEmailVerifiedRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/health': {
-      id: '/health'
-      path: '/health'
-      fullPath: '/health'
-      preLoaderRoute: typeof HealthRouteImport
+    '/(auth)/forgot-password': {
+      id: '/(auth)/forgot-password'
+      path: '/forgot-password'
+      fullPath: '/forgot-password'
+      preLoaderRoute: typeof authForgotPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/reset-password': {
-      id: '/reset-password'
+    '/(auth)/otp': {
+      id: '/(auth)/otp'
+      path: '/otp'
+      fullPath: '/otp'
+      preLoaderRoute: typeof authOtpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(auth)/reset-password': {
+      id: '/(auth)/reset-password'
       path: '/reset-password'
       fullPath: '/reset-password'
-      preLoaderRoute: typeof ResetPasswordRouteImport
+      preLoaderRoute: typeof authResetPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/sign-in': {
-      id: '/sign-in'
+    '/(auth)/sign-in': {
+      id: '/(auth)/sign-in'
       path: '/sign-in'
       fullPath: '/sign-in'
-      preLoaderRoute: typeof SignInRouteImport
+      preLoaderRoute: typeof authSignInRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/sign-up': {
-      id: '/sign-up'
+    '/(auth)/sign-up': {
+      id: '/(auth)/sign-up'
       path: '/sign-up'
       fullPath: '/sign-up'
-      preLoaderRoute: typeof SignUpRouteImport
+      preLoaderRoute: typeof authSignUpRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/verify': {
-      id: '/verify'
+    '/(auth)/verify': {
+      id: '/(auth)/verify'
       path: '/verify'
       fullPath: '/verify'
-      preLoaderRoute: typeof VerifyRouteImport
+      preLoaderRoute: typeof authVerifyRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/learn/': {
-      id: '/learn/'
-      path: '/learn'
-      fullPath: '/learn/'
-      preLoaderRoute: typeof LearnIndexRouteImport
+    '/(public)/': {
+      id: '/(public)/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof publicIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/learn/bookmarks': {
-      id: '/learn/bookmarks'
-      path: '/learn/bookmarks'
-      fullPath: '/learn/bookmarks'
-      preLoaderRoute: typeof LearnBookmarksRouteImport
+    '/(system)/health': {
+      id: '/(system)/health'
+      path: '/health'
+      fullPath: '/health'
+      preLoaderRoute: typeof systemHealthRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/learn/my-learning': {
-      id: '/learn/my-learning'
-      path: '/learn/my-learning'
-      fullPath: '/learn/my-learning'
-      preLoaderRoute: typeof LearnMyLearningRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/learn/progress': {
-      id: '/learn/progress'
-      path: '/learn/progress'
-      fullPath: '/learn/progress'
-      preLoaderRoute: typeof LearnProgressRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/learn/sample': {
-      id: '/learn/sample'
-      path: '/learn/sample'
-      fullPath: '/learn/sample'
-      preLoaderRoute: typeof LearnSampleRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/reset-password/$token': {
-      id: '/reset-password/$token'
+    '/(auth)/reset-password/$token': {
+      id: '/(auth)/reset-password/$token'
       path: '/$token'
       fullPath: '/reset-password/$token'
-      preLoaderRoute: typeof ResetPasswordTokenRouteImport
-      parentRoute: typeof ResetPasswordRoute
+      preLoaderRoute: typeof authResetPasswordTokenRouteImport
+      parentRoute: typeof authResetPasswordRoute
     }
-    '/api/auth/$': {
-      id: '/api/auth/$'
+    '/(learning)/learn/': {
+      id: '/(learning)/learn/'
+      path: '/learn'
+      fullPath: '/learn/'
+      preLoaderRoute: typeof learningLearnIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(learning)/learn/bookmarks': {
+      id: '/(learning)/learn/bookmarks'
+      path: '/learn/bookmarks'
+      fullPath: '/learn/bookmarks'
+      preLoaderRoute: typeof learningLearnBookmarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(learning)/learn/my-learning': {
+      id: '/(learning)/learn/my-learning'
+      path: '/learn/my-learning'
+      fullPath: '/learn/my-learning'
+      preLoaderRoute: typeof learningLearnMyLearningRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(learning)/learn/progress': {
+      id: '/(learning)/learn/progress'
+      path: '/learn/progress'
+      fullPath: '/learn/progress'
+      preLoaderRoute: typeof learningLearnProgressRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(learning)/learn/sample': {
+      id: '/(learning)/learn/sample'
+      path: '/learn/sample'
+      fullPath: '/learn/sample'
+      preLoaderRoute: typeof learningLearnSampleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(api)/api/auth/$': {
+      id: '/(api)/api/auth/$'
       path: '/api/auth/$'
       fullPath: '/api/auth/$'
-      preLoaderRoute: typeof ApiAuthSplatRouteImport
+      preLoaderRoute: typeof apiApiAuthSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/learn/$courseSlug/$lessonSlug': {
-      id: '/learn/$courseSlug/$lessonSlug'
+    '/(learning)/learn/$courseSlug/$lessonSlug': {
+      id: '/(learning)/learn/$courseSlug/$lessonSlug'
       path: '/learn/$courseSlug/$lessonSlug'
       fullPath: '/learn/$courseSlug/$lessonSlug'
-      preLoaderRoute: typeof LearnCourseSlugLessonSlugRouteImport
+      preLoaderRoute: typeof learningLearnCourseSlugLessonSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/learn/courses/$slug': {
-      id: '/learn/courses/$slug'
+    '/(learning)/learn/courses/$slug': {
+      id: '/(learning)/learn/courses/$slug'
       path: '/learn/courses/$slug'
       fullPath: '/learn/courses/$slug'
-      preLoaderRoute: typeof LearnCoursesSlugRouteImport
+      preLoaderRoute: typeof learningLearnCoursesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
 }
 
-interface ResetPasswordRouteChildren {
-  ResetPasswordTokenRoute: typeof ResetPasswordTokenRoute
+interface authResetPasswordRouteChildren {
+  authResetPasswordTokenRoute: typeof authResetPasswordTokenRoute
 }
 
-const ResetPasswordRouteChildren: ResetPasswordRouteChildren = {
-  ResetPasswordTokenRoute: ResetPasswordTokenRoute,
+const authResetPasswordRouteChildren: authResetPasswordRouteChildren = {
+  authResetPasswordTokenRoute: authResetPasswordTokenRoute,
 }
 
-const ResetPasswordRouteWithChildren = ResetPasswordRoute._addFileChildren(
-  ResetPasswordRouteChildren,
-)
+const authResetPasswordRouteWithChildren =
+  authResetPasswordRoute._addFileChildren(authResetPasswordRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  EmailVerifiedRoute: EmailVerifiedRoute,
-  HealthRoute: HealthRoute,
-  ResetPasswordRoute: ResetPasswordRouteWithChildren,
-  SignInRoute: SignInRoute,
-  SignUpRoute: SignUpRoute,
-  VerifyRoute: VerifyRoute,
-  LearnBookmarksRoute: LearnBookmarksRoute,
-  LearnMyLearningRoute: LearnMyLearningRoute,
-  LearnProgressRoute: LearnProgressRoute,
-  LearnSampleRoute: LearnSampleRoute,
-  LearnIndexRoute: LearnIndexRoute,
-  ApiAuthSplatRoute: ApiAuthSplatRoute,
-  LearnCourseSlugLessonSlugRoute: LearnCourseSlugLessonSlugRoute,
-  LearnCoursesSlugRoute: LearnCoursesSlugRoute,
+  authEmailVerifiedRoute: authEmailVerifiedRoute,
+  authForgotPasswordRoute: authForgotPasswordRoute,
+  authOtpRoute: authOtpRoute,
+  authResetPasswordRoute: authResetPasswordRouteWithChildren,
+  authSignInRoute: authSignInRoute,
+  authSignUpRoute: authSignUpRoute,
+  authVerifyRoute: authVerifyRoute,
+  systemHealthRoute: systemHealthRoute,
+  publicIndexRoute: publicIndexRoute,
+  learningLearnBookmarksRoute: learningLearnBookmarksRoute,
+  learningLearnMyLearningRoute: learningLearnMyLearningRoute,
+  learningLearnProgressRoute: learningLearnProgressRoute,
+  learningLearnSampleRoute: learningLearnSampleRoute,
+  learningLearnIndexRoute: learningLearnIndexRoute,
+  apiApiAuthSplatRoute: apiApiAuthSplatRoute,
+  learningLearnCourseSlugLessonSlugRoute:
+    learningLearnCourseSlugLessonSlugRoute,
+  learningLearnCoursesSlugRoute: learningLearnCoursesSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

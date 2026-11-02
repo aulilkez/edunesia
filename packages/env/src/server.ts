@@ -41,6 +41,16 @@ export function parseServerEnvironment(environment: Record<string, string | unde
   if (Boolean(parsedEnvironment.SMTP_USER) !== Boolean(parsedEnvironment.SMTP_PASS)) {
     throw new Error("SMTP_USER and SMTP_PASS must either both be set or both be empty.");
   }
+  if (
+    Boolean(parsedEnvironment.GOOGLE_CLIENT_ID) !== Boolean(parsedEnvironment.GOOGLE_CLIENT_SECRET)
+  ) {
+    throw new Error("GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET must be configured together.");
+  }
+  if (
+    Boolean(parsedEnvironment.GITHUB_CLIENT_ID) !== Boolean(parsedEnvironment.GITHUB_CLIENT_SECRET)
+  ) {
+    throw new Error("GITHUB_CLIENT_ID and GITHUB_CLIENT_SECRET must be configured together.");
+  }
 
   if (parsedEnvironment.APP_ENV === "production") {
     const missing = [

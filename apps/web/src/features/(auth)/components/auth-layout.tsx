@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader } from "@edunesia/ui/com
 import { Input } from "@edunesia/ui/components/input";
 import { Label } from "@edunesia/ui/components/label";
 
-export type AuthMode = "sign-in" | "sign-up" | "forgot" | "reset" | "verify" | "verified";
+export type AuthMode = "sign-in" | "sign-up" | "forgot" | "reset" | "otp" | "verify" | "verified";
 
 const modeCopy: Record<AuthMode, { title: string; description: string }> = {
   "sign-in": { title: "Welcome back", description: "Sign in to continue learning." },
@@ -17,6 +17,7 @@ const modeCopy: Record<AuthMode, { title: string; description: string }> = {
     description: "We’ll send a reset link if an account matches.",
   },
   reset: { title: "Choose a new password", description: "Use at least 12 characters." },
+  otp: { title: "Sign in with a code", description: "We’ll email you a one-time sign-in code." },
   verify: {
     title: "Check your email",
     description: "We’ll send a fresh verification link if your account needs one.",
@@ -67,14 +68,18 @@ export function AuthField({
   type = "text",
   value,
   onChange,
+  onBlur,
   autoComplete,
+  error,
 }: {
   id: string;
   label: string;
   type?: string;
   value: string;
   onChange: (value: string) => void;
+  onBlur?: () => void;
   autoComplete?: string;
+  error?: string;
 }) {
   const [visible, setVisible] = useState(false);
   const password = type === "password";
@@ -88,7 +93,10 @@ export function AuthField({
           value={value}
           autoComplete={autoComplete}
           onChange={(event) => onChange(event.target.value)}
+          onBlur={onBlur}
           required
+          aria-invalid={Boolean(error)}
+          aria-describedby={error ? `${id}-error` : undefined}
           className={password ? "pr-10" : undefined}
         />
         {password ? (
@@ -103,6 +111,11 @@ export function AuthField({
           </button>
         ) : null}
       </div>
+      {error ? (
+        <p id={`${id}-error`} className="text-sm text-destructive" role="alert">
+          {error}
+        </p>
+      ) : null}
     </div>
   );
 }

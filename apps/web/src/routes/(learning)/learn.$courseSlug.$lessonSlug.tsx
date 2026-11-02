@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { NotFoundPage } from "../components/shared/not-found-page";
-import { isPublishedLesson, PublicLesson } from "../features/(learning)";
+import { NotFoundPage } from "../../components/shared/not-found-page";
+import { isPublishedLesson, PublicLesson } from "../../features/(learning)";
 
-export const Route = createFileRoute("/learn/$courseSlug/$lessonSlug")({
+export const Route = createFileRoute("/(learning)/learn/$courseSlug/$lessonSlug")({
   head: ({ params }) => ({
     meta: [{ title: `${params.lessonSlug.replaceAll("-", " ")} | Edunesia Learn` }],
   }),

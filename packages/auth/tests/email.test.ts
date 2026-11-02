@@ -7,7 +7,7 @@ import {
   type SmtpTransport,
   type SmtpTransportFactory,
 } from "../src/email/provider";
-import { passwordResetEmail, verificationEmail } from "../src/email/templates";
+import { emailOtpEmail, passwordResetEmail, verificationEmail } from "../src/email/templates";
 import type { EmailMessage } from "../src/email/types";
 
 const configuration: SmtpConfiguration = {
@@ -110,8 +110,13 @@ test("Better Auth email callbacks use shared templates and propagate provider fa
     user: { email: "learner@example.test" },
     url: "https://example.test/reset?token=reset-token",
   });
+  await callbacks.sendVerificationOTP({
+    email: "learner@example.test",
+    otp: "123456",
+    type: "sign-in",
+  });
 
-  expect(send).toHaveBeenCalledTimes(2);
+  expect(send).toHaveBeenCalledTimes(3);
   expect(send.mock.calls[0]?.[0]).toMatchObject({
     subject: "Verify your Edunesia email",
     text: expect.stringContaining("verify-token"),
@@ -121,6 +126,11 @@ test("Better Auth email callbacks use shared templates and propagate provider fa
     subject: "Reset your Edunesia password",
     text: expect.stringContaining("reset-token"),
     html: expect.stringContaining("Reset password"),
+  });
+  expect(send.mock.calls[2]?.[0]).toMatchObject({
+    subject: "Your Edunesia verification code",
+    text: expect.stringContaining("123456"),
+    html: expect.stringContaining("123456"),
   });
 
   const failure = createAuthEmailCallbacks({
@@ -140,4 +150,8 @@ test("HTML email templates escape untrusted link values and provide a text fallb
   const message = verificationEmail("learner@example.test", 'https://example.test/?x="<script>');
   expect(message.html).toContain("&quot;&lt;script&gt;");
   expect(message.text).toContain('x="<script>');
+
+  const otp = emailOtpEmail("learner@example.test", "123456", "sign-in");
+  expect(otp.html).toContain("123456");
+  expect(otp.text).toContain("expires in 5 minutes");
 });

@@ -1,6 +1,7 @@
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { APIError, createAuthMiddleware } from "better-auth/api";
+import { emailOTP } from "better-auth/plugins";
 
 import type { Database } from "@edunesia/database";
 import { accounts, rateLimits, sessions, users, verifications } from "@edunesia/database/schema";
@@ -28,6 +29,7 @@ export function createAuth(database: Database, env: ServerEnv = serverEnv) {
     }),
     emailAndPassword: {
       enabled: true,
+      disableSignUp: !LEGAL_DOCUMENTS_AVAILABLE,
       requireEmailVerification: true,
       revokeSessionsOnPasswordReset: true,
       resetPasswordTokenExpiresIn: 60 * 30,
@@ -45,11 +47,31 @@ export function createAuth(database: Database, env: ServerEnv = serverEnv) {
     },
     socialProviders: {
       ...(env.GOOGLE_CLIENT_ID && env.GOOGLE_CLIENT_SECRET
-        ? { google: { clientId: env.GOOGLE_CLIENT_ID, clientSecret: env.GOOGLE_CLIENT_SECRET } }
+        ? {
+            google: {
+              clientId: env.GOOGLE_CLIENT_ID,
+              clientSecret: env.GOOGLE_CLIENT_SECRET,
+              disableSignUp: !LEGAL_DOCUMENTS_AVAILABLE,
+            },
+          }
         : {}),
       ...(env.GITHUB_CLIENT_ID && env.GITHUB_CLIENT_SECRET
-        ? { github: { clientId: env.GITHUB_CLIENT_ID, clientSecret: env.GITHUB_CLIENT_SECRET } }
+        ? {
+            github: {
+              clientId: env.GITHUB_CLIENT_ID,
+              clientSecret: env.GITHUB_CLIENT_SECRET,
+              disableSignUp: !LEGAL_DOCUMENTS_AVAILABLE,
+            },
+          }
         : {}),
+    },
+    account: {
+      accountLinking: {
+        enabled: true,
+        trustedProviders: [],
+        allowDifferentEmails: false,
+        requireLocalEmailVerified: true,
+      },
     },
     session: {
       expiresIn: 60 * 60 * 24 * 7,
@@ -112,6 +134,17 @@ export function createAuth(database: Database, env: ServerEnv = serverEnv) {
         "/send-verification-email": { window: 60, max: 3 },
       },
     },
+    plugins: [
+      emailOTP({
+        sendVerificationOTP: emailCallbacks.sendVerificationOTP,
+        otpLength: 6,
+        expiresIn: 60 * 5,
+        allowedAttempts: 3,
+        storeOTP: "hashed",
+        disableSignUp: true,
+        rateLimit: { window: 60, max: 3 },
+      }),
+    ],
   });
 }
 

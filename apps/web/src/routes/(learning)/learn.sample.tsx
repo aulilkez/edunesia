@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { SampleLessonPage } from "../features/(learning)/components/lesson/sample-lesson";
+import { SampleLessonPage } from "../../features/(learning)/components/lesson/sample-lesson";
 
-export const Route = createFileRoute("/learn/sample")({
+export const Route = createFileRoute("/(learning)/learn/sample")({
   head: () => ({
     meta: [
       { title: "Mathematical Models | Edunesia" },

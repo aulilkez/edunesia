@@ -4,7 +4,7 @@ import { getRequest } from "@tanstack/react-start/server";
 
 import { auth } from "../../../server/api";
 
-const getAuthStatus = createServerFn({ method: "GET" }).handler(async () => {
+export const getAuthStatus = createServerFn({ method: "GET" }).handler(async () => {
   const session = await auth.api.getSession({ headers: getRequest().headers });
   if (!session) return "anonymous" as const;
   return session.user.emailVerified ? ("verified" as const) : ("unverified" as const);

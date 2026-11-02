@@ -37,6 +37,12 @@ test("SMTP settings validate ports, booleans, sender address, and paired credent
   expect(() => parseServerEnvironment({ SMTP_USER: "edunesia" })).toThrow(
     "SMTP_USER and SMTP_PASS must either both be set or both be empty",
   );
+  expect(() => parseServerEnvironment({ GOOGLE_CLIENT_ID: "google-id" })).toThrow(
+    "GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET must be configured together",
+  );
+  expect(() => parseServerEnvironment({ GITHUB_CLIENT_SECRET: "github-secret" })).toThrow(
+    "GITHUB_CLIENT_ID and GITHUB_CLIENT_SECRET must be configured together",
+  );
 });
 
 test("production requires SMTP connection and sender configuration", () => {

@@ -15,7 +15,7 @@ import {
   CardTitle,
 } from "@edunesia/ui/components/card";
 
-import { LanguageSelect } from "../components/shared/language-select";
+import { LanguageSelect } from "../../components/shared/language-select";
 
 const getHealth = createServerFn({ method: "GET" }).handler(async () => {
   const startedAt = performance.now();
@@ -41,7 +41,7 @@ const getHealth = createServerFn({ method: "GET" }).handler(async () => {
   };
 });
 
-export const Route = createFileRoute("/health")({
+export const Route = createFileRoute("/(system)/health")({
   loader: () => getHealth(),
   component: HealthPage,
 });

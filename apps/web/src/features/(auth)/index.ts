@@ -1,7 +1,7 @@
 export {
   EmailVerifiedPage,
   ForgotPasswordPage,
-  PasswordRecoveryPage,
+  OtpPage,
   ResetPasswordPage,
   SignInPage,
   SignUpPage,
