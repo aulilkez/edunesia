@@ -5,6 +5,7 @@ import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 
 import viteReact from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
+import evlog from "evlog/vite";
 // loadEnv is a Vite helper not re-exported by Vite+.
 // oxlint-disable-next-line vite-plus/prefer-vite-plus-imports
 import { loadEnv } from "vite";
@@ -27,7 +28,7 @@ const config = defineConfig(({ mode }) => {
       options: { typeAware: true, typeCheck: true },
     },
     resolve: { tsconfigPaths: true },
-    plugins: lazyPlugins(() => [devtools(), tailwindcss(), tanstackStart(), viteReact()]),
+    plugins: lazyPlugins(() => [devtools(), evlog(), tailwindcss(), tanstackStart(), viteReact()]),
   };
 });
 

@@ -17,6 +17,10 @@ Environment variables are validated with Zod through `@t3-oss/env-core`. Import
 `serverEnv` from `src/lib/env/server.ts` only in server-side code. Server secrets are never
 available through `clientEnv`.
 
+Structured logging uses `evlog`. Browser errors are logged from the root document, while
+server-side code can use `createWebLogger` or `logWebsiteRequestFailure` from
+`src/lib/server/logger.ts`. Secret-like fields are redacted by `evlog.config.ts`.
+
 The local database URL in `.env.example` matches the PostgreSQL credentials in
 `edunesia-main/compose.yaml`. Production requires explicit database, auth, and SMTP settings;
 SMTP credentials and each OAuth provider's ID/secret must be configured as pairs.
