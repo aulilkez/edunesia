@@ -21,9 +21,18 @@ Structured logging uses `evlog`. Browser errors are logged from the root documen
 server-side code can use `createWebLogger` or `logWebsiteRequestFailure` from
 `src/lib/server/logger.ts`. Secret-like fields are redacted by `evlog.config.ts`.
 
-The local database URL in `.env.example` matches the PostgreSQL credentials in
-`edunesia-main/compose.yaml`. Production requires explicit database, auth, and SMTP settings;
-SMTP credentials and each OAuth provider's ID/secret must be configured as pairs.
+The local database URL in `.env.example` matches the PostgreSQL credentials in `compose.yaml`.
+Start the local database and apply schema migrations with:
+
+```bash
+bun run db:up
+bun run db:migrate
+```
+
+The initial Drizzle schema is in `src/db/schema.ts`. Generate future migrations with
+`bun run db:generate`, and open Drizzle Studio with `bun run db:studio`. Production requires
+explicit database, auth, and SMTP settings; SMTP credentials and each OAuth provider's ID/secret
+must be configured as pairs.
 
 # Building For Production
 
