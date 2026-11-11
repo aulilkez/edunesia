@@ -8,79 +8,122 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from "./routes/__root";
-import { Route as IndexRouteImport } from "./routes/index";
-import { Route as ApiTrpcSplatRouteImport } from "./routes/api.trpc.$";
+import { Route as rootRouteImport } from './routes/__root'
+import { Route as IndexRouteImport } from './routes/index'
+import { Route as CoursesIndexRouteImport } from './routes/courses.index'
+import { Route as ApiTrpcSplatRouteImport } from './routes/api.trpc.$'
+import { Route as CoursesCourseSlugLessonSlugRouteImport } from './routes/courses.$courseSlug.$lessonSlug'
 
 const IndexRoute = IndexRouteImport.update({
-  id: "/",
-  path: "/",
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
+const CoursesIndexRoute = CoursesIndexRouteImport.update({
+  id: '/courses/',
+  path: '/courses/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiTrpcSplatRoute = ApiTrpcSplatRouteImport.update({
-  id: "/api/trpc/$",
-  path: "/api/trpc/$",
+  id: '/api/trpc/$',
+  path: '/api/trpc/$',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
+const CoursesCourseSlugLessonSlugRoute =
+  CoursesCourseSlugLessonSlugRouteImport.update({
+    id: '/courses/$courseSlug/$lessonSlug',
+    path: '/courses/$courseSlug/$lessonSlug',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
-  "/": typeof IndexRoute;
-  "/api/trpc/$": typeof ApiTrpcSplatRoute;
+  '/': typeof IndexRoute
+  '/courses/': typeof CoursesIndexRoute
+  '/api/trpc/$': typeof ApiTrpcSplatRoute
+  '/courses/$courseSlug/$lessonSlug': typeof CoursesCourseSlugLessonSlugRoute
 }
 export interface FileRoutesByTo {
-  "/": typeof IndexRoute;
-  "/api/trpc/$": typeof ApiTrpcSplatRoute;
+  '/': typeof IndexRoute
+  '/courses': typeof CoursesIndexRoute
+  '/api/trpc/$': typeof ApiTrpcSplatRoute
+  '/courses/$courseSlug/$lessonSlug': typeof CoursesCourseSlugLessonSlugRoute
 }
 export interface FileRoutesById {
-  __root__: typeof rootRouteImport;
-  "/": typeof IndexRoute;
-  "/api/trpc/$": typeof ApiTrpcSplatRoute;
+  __root__: typeof rootRouteImport
+  '/': typeof IndexRoute
+  '/courses/': typeof CoursesIndexRoute
+  '/api/trpc/$': typeof ApiTrpcSplatRoute
+  '/courses/$courseSlug/$lessonSlug': typeof CoursesCourseSlugLessonSlugRoute
 }
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath;
-  fullPaths: "/" | "/api/trpc/$";
-  fileRoutesByTo: FileRoutesByTo;
-  to: "/" | "/api/trpc/$";
-  id: "__root__" | "/" | "/api/trpc/$";
-  fileRoutesById: FileRoutesById;
+  fileRoutesByFullPath: FileRoutesByFullPath
+  fullPaths:
+    '/' | '/courses/' | '/api/trpc/$' | '/courses/$courseSlug/$lessonSlug'
+  fileRoutesByTo: FileRoutesByTo
+  to: '/' | '/courses' | '/api/trpc/$' | '/courses/$courseSlug/$lessonSlug'
+  id:
+    | '__root__'
+    | '/'
+    | '/courses/'
+    | '/api/trpc/$'
+    | '/courses/$courseSlug/$lessonSlug'
+  fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute;
-  ApiTrpcSplatRoute: typeof ApiTrpcSplatRoute;
+  IndexRoute: typeof IndexRoute
+  CoursesIndexRoute: typeof CoursesIndexRoute
+  ApiTrpcSplatRoute: typeof ApiTrpcSplatRoute
+  CoursesCourseSlugLessonSlugRoute: typeof CoursesCourseSlugLessonSlugRoute
 }
 
-declare module "@tanstack/react-router" {
+declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    "/": {
-      id: "/";
-      path: "/";
-      fullPath: "/";
-      preLoaderRoute: typeof IndexRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
-    "/api/trpc/$": {
-      id: "/api/trpc/$";
-      path: "/api/trpc/$";
-      fullPath: "/api/trpc/$";
-      preLoaderRoute: typeof ApiTrpcSplatRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/courses/': {
+      id: '/courses/'
+      path: '/courses'
+      fullPath: '/courses/'
+      preLoaderRoute: typeof CoursesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/trpc/$': {
+      id: '/api/trpc/$'
+      path: '/api/trpc/$'
+      fullPath: '/api/trpc/$'
+      preLoaderRoute: typeof ApiTrpcSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/courses/$courseSlug/$lessonSlug': {
+      id: '/courses/$courseSlug/$lessonSlug'
+      path: '/courses/$courseSlug/$lessonSlug'
+      fullPath: '/courses/$courseSlug/$lessonSlug'
+      preLoaderRoute: typeof CoursesCourseSlugLessonSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CoursesIndexRoute: CoursesIndexRoute,
   ApiTrpcSplatRoute: ApiTrpcSplatRoute,
-};
+  CoursesCourseSlugLessonSlugRoute: CoursesCourseSlugLessonSlugRoute,
+}
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>();
+  ._addFileTypes<FileRouteTypes>()
 
-import type { getRouter } from "./router.tsx";
-import type { createStart } from "@tanstack/react-start";
-declare module "@tanstack/react-start" {
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
   interface Register {
-    ssr: true;
-    router: Awaited<ReturnType<typeof getRouter>>;
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
   }
 }

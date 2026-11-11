@@ -1,5 +1,5 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { createFileRoute } from "@tanstack/react-router";
+import { Link, createFileRoute } from "@tanstack/react-router";
 
 import { useTRPC } from "@/lib/trpc";
 
@@ -22,6 +22,12 @@ function Home() {
       <p className="mt-4 text-sm" role="status">
         API status: {health.data.status} (database: {health.data.database})
       </p>
+      <Link
+        className="mt-6 inline-flex font-medium text-primary underline underline-offset-4"
+        to="/courses"
+      >
+        Explore courses
+      </Link>
     </div>
   );
 }

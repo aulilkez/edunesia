@@ -12,6 +12,9 @@ bun --bun run dev
 
 ## Environment Variables
 
+> **Authentication status:** the root app currently has no Better Auth runtime;
+> the auth/OAuth variables below are placeholders, not working sign-in flows.
+
 Environment variables are validated with Zod through `@t3-oss/env-core`. Import
 `clientEnv` from `src/lib/env/client.ts` for browser-safe `VITE_*` values and
 `serverEnv` from `src/lib/env/server.ts` only in server-side code. Server secrets are never
@@ -44,6 +47,24 @@ request and dehydrated/hydrated by `@tanstack/react-router-ssr-query`.
 The health procedure is public. There is no authentication integration in this starter yet, so
 do not expose private data or add protected procedures until an auth provider is configured.
 Run the tRPC/query checks with `bun run test`.
+
+## Curated learning content
+
+Git-managed courses and lessons use Content Collections with Zod frontmatter
+schemas, validated relationships, and a shared SSR Markdown/MDX renderer.
+Public routes are available at `/courses/` and
+`/courses/{courseSlug}/{lessonSlug}`. Read [content/README.md](./content/README.md)
+before adding lessons. Community content remains a separate database-backed
+concern and must use the safe Markdown-only renderer, never the trusted MDX
+compiler.
+
+## Developer standards
+
+The root `vite.config.ts` is the shared Vite+ configuration. Use
+`bun run check`, `bun run test`, and `bun run build` before submitting changes.
+See [CONTRIBUTING.md](./CONTRIBUTING.md) and
+[docs/engineering.md](./docs/engineering.md) for tooling, CI, dependency
+automation, Trivy, and Lefthook details.
 
 # Building For Production
 

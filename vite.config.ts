@@ -4,6 +4,7 @@ import { devtools } from "@tanstack/devtools-vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 
 import viteReact from "@vitejs/plugin-react";
+import contentCollections from "@content-collections/vite";
 import tailwindcss from "@tailwindcss/vite";
 import evlog from "evlog/vite";
 // loadEnv is a Vite helper not re-exported by Vite+.
@@ -18,10 +19,9 @@ const config = defineConfig(({ mode }) => {
   }
 
   return {
-    staged: {
-      "*": "vp check --fix",
+    fmt: {
+      ignorePatterns: ["src/routeTree.gen.ts"],
     },
-    fmt: {},
     lint: {
       jsPlugins: [{ name: "vite-plus", specifier: "vite-plus/oxlint-plugin" }],
       rules: { "vite-plus/prefer-vite-plus-imports": "error" },
@@ -31,7 +31,14 @@ const config = defineConfig(({ mode }) => {
       include: ["src/**/*.test.{ts,tsx}"],
     },
     resolve: { tsconfigPaths: true },
-    plugins: lazyPlugins(() => [devtools(), evlog(), tailwindcss(), tanstackStart(), viteReact()]),
+    plugins: lazyPlugins(() => [
+      contentCollections(),
+      devtools(),
+      evlog(),
+      tailwindcss(),
+      tanstackStart(),
+      viteReact(),
+    ]),
   };
 });
 

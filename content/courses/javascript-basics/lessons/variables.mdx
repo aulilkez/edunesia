@@ -1,0 +1,62 @@
+---
+title: Variables and values
+slug: variables
+description: Store and reuse values with JavaScript variables.
+course: javascript-basics
+order: 1
+language: en
+difficulty: beginner
+estimatedMinutes: 10
+tags:
+  - JavaScript
+  - Variables
+status: published
+relatedLessons: []
+---
+
+## Declaring a variable
+
+Use `const` when a binding should not be reassigned, and `let` when it should.
+
+```js title="greeting.js"
+const greeting = "Hello";
+let visits = 0;
+
+visits += 1;
+console.log(greeting, visits);
+```
+
+| Keyword | Reassignable | Typical use          |
+| ------- | ------------ | -------------------- |
+| `const` | No           | Default choice       |
+| `let`   | Yes          | A value that changes |
+
+<Tip title="Prefer const">
+  Start with `const`. Change to `let` only when reassignment is needed.
+</Tip>
+
+## A small equation
+
+The value of a half can be written as $\frac{1}{2}$.
+
+<Math formula="\frac{1}{2}" />
+
+## A simple flow
+
+```mermaid
+flowchart LR
+  Start --> Practice
+  Practice --> Review
+```
+
+## Compare a few values
+
+<Chart
+  type="bar"
+  title="Variable declarations"
+  data='[{"label":"const","value":2},{"label":"let","value":1}]'
+/>
+
+## Try it
+
+Change the greeting and run the code again.

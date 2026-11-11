@@ -1,0 +1,26 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", "group:recommended"],
+  "enabledManagers": ["bun"],
+  "schedule": ["before 5am on monday"],
+  "timezone": "UTC",
+  "prConcurrentLimit": 5,
+  "rangeStrategy": "bump",
+  "labels": ["dependencies"],
+  "packageRules": [
+    {
+      "matchManagers": ["bun"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "Bun minor and patch updates"
+    },
+    {
+      "matchManagers": ["bun"],
+      "matchUpdateTypes": ["major"],
+      "groupName": "Bun major updates"
+    }
+  ],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 5am on the first day of the month"]
+  }
+}
