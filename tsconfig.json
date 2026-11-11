@@ -5,7 +5,8 @@
     "vite.config.ts",
     "content-collections.ts",
     "drizzle.config.ts",
-    "evlog.config.ts"
+    "evlog.config.ts",
+    "tooling/**/*.ts"
   ],
   "exclude": ["edunesia-main", "node_modules", "dist"],
   "compilerOptions": {

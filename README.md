@@ -22,7 +22,7 @@ available through `clientEnv`.
 
 Structured logging uses `evlog`. Browser errors are logged from the root document, while
 server-side code can use `createWebLogger` or `logWebsiteRequestFailure` from
-`src/lib/server/logger.ts`. Secret-like fields are redacted by `evlog.config.ts`.
+`src/server/logger.ts`. Secret-like fields are redacted by `evlog.config.ts`.
 
 The local database URL in `.env.example` matches the PostgreSQL credentials in `compose.yaml`.
 Start the local database and apply schema migrations with:
@@ -32,14 +32,14 @@ bun run db:up
 bun run db:migrate
 ```
 
-The initial Drizzle schema is in `src/db/schema.ts`. Generate future migrations with
+The initial Drizzle schema is in `src/server/db/schema.ts`. Generate future migrations with
 `bun run db:generate`, and open Drizzle Studio with `bun run db:studio`. Production requires
 explicit database, auth, and SMTP settings; SMTP credentials and each OAuth provider's ID/secret
 must be configured as pairs.
 
 The tRPC API is available at `/api/trpc`. Its request context and router initialization are in
-`src/lib/server/trpc/`; the API route only adapts HTTP requests. Add procedures through
-`src/lib/server/trpc/init.ts` and compose domain routers in `src/lib/server/trpc/routers/_app.ts`.
+`src/server/trpc/`; the API route only adapts HTTP requests. Add procedures through
+`src/server/trpc/init.ts` and compose domain routers in `src/server/trpc/routers/_app.ts`.
 For client queries, use `useTRPC()` from `src/lib/trpc` with TanStack Query hooks. The home page
 demonstrates a health query prefetched by its route loader. QueryClient state is isolated per router
 request and dehydrated/hydrated by `@tanstack/react-router-ssr-query`.
@@ -65,6 +65,8 @@ The root `vite.config.ts` is the shared Vite+ configuration. Use
 See [CONTRIBUTING.md](./CONTRIBUTING.md) and
 [docs/engineering.md](./docs/engineering.md) for tooling, CI, dependency
 automation, Trivy, and Lefthook details.
+See [docs/architecture.md](./docs/architecture.md) for source ownership and
+server/client boundaries.
 
 # Building For Production
 

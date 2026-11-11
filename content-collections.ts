@@ -7,8 +7,8 @@ import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import { z } from "zod";
 
-import { validateMdx } from "./src/content/mdx-validation";
-import { courseSchema, lessonSchema } from "./src/content/schemas";
+import { validateMdx } from "./src/features/content/mdx-validation";
+import { courseSchema, lessonSchema } from "./src/features/content/schemas";
 
 const mdxOptions: MdxOptions = {
   remarkPlugins: [remarkGfm, remarkMath, validateMdx],

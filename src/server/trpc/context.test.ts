@@ -1,6 +1,6 @@
 import { afterAll, describe, expect, it } from "vite-plus/test";
 
-import { database } from "../db";
+import { database } from "../db/connection";
 import { createTRPCContext } from "./context";
 
 afterAll(async () => {

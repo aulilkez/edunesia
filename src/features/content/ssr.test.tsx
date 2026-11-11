@@ -2,7 +2,7 @@ import { allLessons } from "content-collections";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vite-plus/test";
 
-import { TrustedMdx } from "@/components/content/mdx-components";
+import { TrustedMdx } from "./components/mdx-components";
 
 describe("trusted content SSR", () => {
   it("renders GFM, math, and deferred visualization fallbacks", () => {

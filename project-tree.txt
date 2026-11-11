@@ -1,0 +1,614 @@
+.
+├── AGENTS.md
+├── bun.lock
+├── components.json
+├── compose.yaml
+├── content
+│   ├── courses
+│   │   └── javascript-basics
+│   │       ├── course.mdx
+│   │       └── lessons
+│   │           └── variables.mdx
+│   └── README.md
+├── content-collections.ts
+├── CONTRIBUTING.md
+├── .cta.json
+├── docs
+│   └── engineering.md
+├── drizzle
+│   ├── 0000_powerful_aqueduct.sql
+│   └── meta
+│       ├── 0000_snapshot.json
+│       └── _journal.json
+├── drizzle.config.ts
+├── edunesia-main
+│   ├── AGENTS.md
+│   ├── apps
+│   │   └── web
+│   │       ├── components.json
+│   │       ├── evlog.config.ts
+│   │       ├── .gitignore
+│   │       ├── index.html
+│   │       ├── package.json
+│   │       ├── public
+│   │       │   ├── favicon.svg
+│   │       │   └── icons.svg
+│   │       ├── src
+│   │       │   ├── components
+│   │       │   │   ├── button.stories.tsx
+│   │       │   │   └── shared
+│   │       │   │       ├── language-select.tsx
+│   │       │   │       ├── not-found-page.tsx
+│   │       │   │       └── theme-switch.tsx
+│   │       │   ├── features
+│   │       │   │   ├── (auth)
+│   │       │   │   │   ├── api
+│   │       │   │   │   │   ├── auth-guard.ts
+│   │       │   │   │   │   └── oauth-provider-status.ts
+│   │       │   │   │   ├── components
+│   │       │   │   │   │   ├── auth-layout.tsx
+│   │       │   │   │   │   ├── auth-pages.tsx
+│   │       │   │   │   │   ├── oauth-buttons.tsx
+│   │       │   │   │   │   └── password-strength.tsx
+│   │       │   │   │   └── index.ts
+│   │       │   │   ├── (learning)
+│   │       │   │   │   ├── components
+│   │       │   │   │   │   ├── course
+│   │       │   │   │   │   │   ├── course-card.tsx
+│   │       │   │   │   │   │   ├── course-detail.tsx
+│   │       │   │   │   │   │   └── learn-explore.tsx
+│   │       │   │   │   │   ├── curriculum
+│   │       │   │   │   │   │   └── course-curriculum.tsx
+│   │       │   │   │   │   ├── dashboard
+│   │       │   │   │   │   │   └── learner-home.tsx
+│   │       │   │   │   │   ├── lesson
+│   │       │   │   │   │   │   ├── public-lesson.tsx
+│   │       │   │   │   │   │   └── sample-lesson.tsx
+│   │       │   │   │   │   ├── quiz
+│   │       │   │   │   │   │   └── lesson-quiz.tsx
+│   │       │   │   │   │   └── shared
+│   │       │   │   │   │       └── learn-header.tsx
+│   │       │   │   │   ├── index.ts
+│   │       │   │   │   ├── README.md
+│   │       │   │   │   └── services
+│   │       │   │   │       ├── course-catalog.ts
+│   │       │   │   │       └── official-content.ts
+│   │       │   │   └── (public)
+│   │       │   │       ├── components
+│   │       │   │       │   ├── home-page.tsx
+│   │       │   │       │   ├── learning-preview.tsx
+│   │       │   │       │   ├── public-navbar.tsx
+│   │       │   │       │   └── start-learning-button.tsx
+│   │       │   │       └── index.ts
+│   │       │   ├── i18n
+│   │       │   │   └── locale-preferences.ts
+│   │       │   ├── lib
+│   │       │   │   ├── logger.ts
+│   │       │   │   └── trpc.ts
+│   │       │   ├── mdx.d.ts
+│   │       │   ├── router.tsx
+│   │       │   ├── routes
+│   │       │   │   ├── (api)
+│   │       │   │   │   └── api.auth.$.tsx
+│   │       │   │   ├── (auth)
+│   │       │   │   │   ├── email-verified.tsx
+│   │       │   │   │   ├── forgot-password.tsx
+│   │       │   │   │   ├── otp.tsx
+│   │       │   │   │   ├── reset-password.$token.tsx
+│   │       │   │   │   ├── reset-password.tsx
+│   │       │   │   │   ├── sign-in.tsx
+│   │       │   │   │   ├── sign-up.tsx
+│   │       │   │   │   └── verify.tsx
+│   │       │   │   ├── (learning)
+│   │       │   │   │   ├── learn.$courseSlug.$lessonSlug.tsx
+│   │       │   │   │   ├── learn.bookmarks.tsx
+│   │       │   │   │   ├── learn.courses.$slug.tsx
+│   │       │   │   │   ├── learn.index.tsx
+│   │       │   │   │   ├── learn.my-learning.tsx
+│   │       │   │   │   ├── learn.progress.tsx
+│   │       │   │   │   └── learn.sample.tsx
+│   │       │   │   ├── (public)
+│   │       │   │   │   └── index.tsx
+│   │       │   │   ├── __root.tsx
+│   │       │   │   └── (system)
+│   │       │   │       └── health.tsx
+│   │       │   ├── routeTree.gen.ts
+│   │       │   ├── server
+│   │       │   │   ├── api.ts
+│   │       │   │   └── logger.ts
+│   │       │   ├── stores
+│   │       │   │   └── app-theme.store.ts
+│   │       │   ├── style.css
+│   │       │   └── test-setup.ts
+│   │       ├── tests
+│   │       │   └── e2e
+│   │       │       ├── auth-pages.spec.ts
+│   │       │       ├── health.spec.ts
+│   │       │       └── sample-content.spec.ts
+│   │       ├── tsconfig.json
+│   │       ├── tsr.config.json
+│   │       └── vite.config.ts
+│   ├── bun.lock
+│   ├── compose.yaml
+│   ├── content
+│   │   ├── courses
+│   │   │   ├── excel-essentials
+│   │   │   │   ├── course.yaml
+│   │   │   │   └── modules
+│   │   │   │       └── working-with-cells
+│   │   │   │           ├── lessons
+│   │   │   │           │   └── 01-first-formulas.mdx
+│   │   │   │           └── module.yaml
+│   │   │   ├── go-programming
+│   │   │   │   ├── course.yaml
+│   │   │   │   └── modules
+│   │   │   │       └── getting-started
+│   │   │   │           ├── lessons
+│   │   │   │           │   └── 01-first-go-program.mdx
+│   │   │   │           └── module.yaml
+│   │   │   ├── java-programming
+│   │   │   │   ├── course.yaml
+│   │   │   │   └── modules
+│   │   │   │       └── getting-started
+│   │   │   │           ├── lessons
+│   │   │   │           │   └── 01-first-java-program.mdx
+│   │   │   │           └── module.yaml
+│   │   │   ├── javascript-foundations
+│   │   │   │   ├── course.yaml
+│   │   │   │   └── modules
+│   │   │   │       └── getting-started
+│   │   │   │           ├── lessons
+│   │   │   │           │   ├── 01-first-program.mdx
+│   │   │   │           │   └── 02-variables.mdx
+│   │   │   │           └── module.yaml
+│   │   │   ├── mathematics-foundations
+│   │   │   │   ├── course.yaml
+│   │   │   │   └── modules
+│   │   │   │       └── calculus
+│   │   │   │           ├── lessons
+│   │   │   │           │   └── 01-mathematical-models.mdx
+│   │   │   │           └── module.yaml
+│   │   │   ├── powerpoint-essentials
+│   │   │   │   ├── course.yaml
+│   │   │   │   └── modules
+│   │   │   │       └── slide-design
+│   │   │   │           ├── lessons
+│   │   │   │           │   └── 01-plan-a-presentation.mdx
+│   │   │   │           └── module.yaml
+│   │   │   ├── python-foundations
+│   │   │   │   ├── course.yaml
+│   │   │   │   └── modules
+│   │   │   │       └── getting-started
+│   │   │   │           ├── lessons
+│   │   │   │           │   └── 01-first-python-program.mdx
+│   │   │   │           └── module.yaml
+│   │   │   ├── rust-programming
+│   │   │   │   ├── course.yaml
+│   │   │   │   └── modules
+│   │   │   │       └── getting-started
+│   │   │   │           ├── lessons
+│   │   │   │           │   └── 01-first-rust-program.mdx
+│   │   │   │           └── module.yaml
+│   │   │   ├── sql-foundations
+│   │   │   │   ├── course.yaml
+│   │   │   │   └── modules
+│   │   │   │       └── querying-data
+│   │   │   │           ├── lessons
+│   │   │   │           │   └── 01-first-query.mdx
+│   │   │   │           └── module.yaml
+│   │   │   ├── web-foundations
+│   │   │   │   ├── course.yaml
+│   │   │   │   └── modules
+│   │   │   │       └── page-structure
+│   │   │   │           ├── lessons
+│   │   │   │           │   └── 01-first-web-page.mdx
+│   │   │   │           └── module.yaml
+│   │   │   └── word-essentials
+│   │   │       ├── course.yaml
+│   │   │       └── modules
+│   │   │           └── structured-documents
+│   │   │               ├── lessons
+│   │   │               │   └── 01-document-structure.mdx
+│   │   │               └── module.yaml
+│   │   ├── docs
+│   │   │   └── README.md
+│   │   ├── guides
+│   │   │   └── README.md
+│   │   └── README.md
+│   ├── CONTRIBUTING.md
+│   ├── docs
+│   │   ├── architecture.md
+│   │   ├── assets
+│   │   │   ├── edunesia-wordmark-dark.png
+│   │   │   └── edunesia-wordmark.png
+│   │   └── engineering
+│   │       ├── coding-standards.md
+│   │       ├── dependency-and-security.md
+│   │       ├── git-workflow.md
+│   │       ├── linting-and-formatting.md
+│   │       ├── monorepo-guidelines.md
+│   │       ├── naming-conventions.md
+│   │       ├── testing-guidelines.md
+│   │       └── typescript-guidelines.md
+│   ├── .env.example
+│   ├── .gitignore
+│   ├── lefthook.yml
+│   ├── package.json
+│   ├── packages
+│   │   ├── auth
+│   │   │   ├── package.json
+│   │   │   ├── README.md
+│   │   │   ├── src
+│   │   │   │   ├── client.ts
+│   │   │   │   ├── email
+│   │   │   │   │   ├── callbacks.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── provider.ts
+│   │   │   │   │   ├── templates.ts
+│   │   │   │   │   └── types.ts
+│   │   │   │   ├── schemas.ts
+│   │   │   │   └── server.ts
+│   │   │   ├── tests
+│   │   │   │   ├── email.test.ts
+│   │   │   │   └── schemas.test.ts
+│   │   │   └── tsconfig.json
+│   │   ├── config
+│   │   │   ├── package.json
+│   │   │   └── tsconfig.base.json
+│   │   ├── content
+│   │   │   ├── package.json
+│   │   │   ├── src
+│   │   │   │   ├── components
+│   │   │   │   │   ├── index.tsx
+│   │   │   │   │   └── mermaid-diagram.tsx
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── parser
+│   │   │   │   │   └── index.tsx
+│   │   │   │   ├── plugins.ts
+│   │   │   │   ├── schemas
+│   │   │   │   │   └── index.ts
+│   │   │   │   └── styles
+│   │   │   │       └── katex.css
+│   │   │   ├── tests
+│   │   │   │   └── content.test.tsx
+│   │   │   └── tsconfig.json
+│   │   ├── database
+│   │   │   ├── drizzle
+│   │   │   │   ├── 0000_calm_alice.sql
+│   │   │   │   ├── 0001_wandering_avengers.sql
+│   │   │   │   ├── 0002_magenta_dagger.sql
+│   │   │   │   ├── 0003_sturdy_mathemanic.sql
+│   │   │   │   └── meta
+│   │   │   │       ├── 0000_snapshot.json
+│   │   │   │       ├── 0001_snapshot.json
+│   │   │   │       ├── 0002_snapshot.json
+│   │   │   │       ├── 0003_snapshot.json
+│   │   │   │       └── _journal.json
+│   │   │   ├── drizzle.config.ts
+│   │   │   ├── package.json
+│   │   │   ├── README.md
+│   │   │   ├── src
+│   │   │   │   ├── helpers
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── pagination.ts
+│   │   │   │   │   ├── soft-delete.ts
+│   │   │   │   │   └── transaction.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── migrate.ts
+│   │   │   │   ├── schema
+│   │   │   │   │   ├── base.ts
+│   │   │   │   │   ├── datasets.ts
+│   │   │   │   │   ├── enums.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── relations.ts
+│   │   │   │   │   ├── users.ts
+│   │   │   │   │   └── workspaces.ts
+│   │   │   │   └── types.ts
+│   │   │   ├── tests
+│   │   │   │   └── helpers.test.ts
+│   │   │   └── tsconfig.json
+│   │   ├── env
+│   │   │   ├── package.json
+│   │   │   ├── README.md
+│   │   │   ├── src
+│   │   │   │   ├── client.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── server.ts
+│   │   │   ├── tests
+│   │   │   │   ├── client.test.ts
+│   │   │   │   └── server.test.ts
+│   │   │   └── tsconfig.json
+│   │   ├── i18n
+│   │   │   ├── package.json
+│   │   │   ├── src
+│   │   │   │   ├── config.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── locales
+│   │   │   │       ├── en-US.ts
+│   │   │   │       ├── id-ID.ts
+│   │   │   │       └── ja-JP.ts
+│   │   │   ├── tests
+│   │   │   │   └── locale.test.ts
+│   │   │   └── tsconfig.json
+│   │   ├── logger
+│   │   │   ├── package.json
+│   │   │   ├── README.md
+│   │   │   ├── src
+│   │   │   │   ├── audit.ts
+│   │   │   │   ├── auth.ts
+│   │   │   │   ├── database.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── logger.ts
+│   │   │   │   ├── security.ts
+│   │   │   │   └── web.ts
+│   │   │   └── tsconfig.json
+│   │   ├── query
+│   │   │   ├── package.json
+│   │   │   ├── README.md
+│   │   │   ├── src
+│   │   │   │   └── index.ts
+│   │   │   ├── tests
+│   │   │   │   └── client.test.ts
+│   │   │   └── tsconfig.json
+│   │   ├── trpc
+│   │   │   ├── package.json
+│   │   │   ├── README.md
+│   │   │   ├── src
+│   │   │   │   ├── exceptions.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── router.ts
+│   │   │   │   └── server.ts
+│   │   │   ├── tests
+│   │   │   │   └── auth.test.ts
+│   │   │   └── tsconfig.json
+│   │   └── ui
+│   │       ├── components.json
+│   │       ├── package.json
+│   │       ├── README.md
+│   │       ├── src
+│   │       │   ├── components
+│   │       │   │   ├── accordion.tsx
+│   │       │   │   ├── alert-dialog.tsx
+│   │       │   │   ├── alert.tsx
+│   │       │   │   ├── aspect-ratio.tsx
+│   │       │   │   ├── attachment.tsx
+│   │       │   │   ├── avatar.tsx
+│   │       │   │   ├── badge.tsx
+│   │       │   │   ├── breadcrumb.tsx
+│   │       │   │   ├── bubble.tsx
+│   │       │   │   ├── button-group.tsx
+│   │       │   │   ├── button.tsx
+│   │       │   │   ├── calendar.tsx
+│   │       │   │   ├── card.tsx
+│   │       │   │   ├── carousel.tsx
+│   │       │   │   ├── chart.tsx
+│   │       │   │   ├── checkbox.tsx
+│   │       │   │   ├── code-block.tsx
+│   │       │   │   ├── collapsible.tsx
+│   │       │   │   ├── combobox.tsx
+│   │       │   │   ├── command.tsx
+│   │       │   │   ├── context-menu.tsx
+│   │       │   │   ├── dialog.tsx
+│   │       │   │   ├── direction.tsx
+│   │       │   │   ├── drawer.tsx
+│   │       │   │   ├── dropdown-menu.tsx
+│   │       │   │   ├── empty.tsx
+│   │       │   │   ├── field.tsx
+│   │       │   │   ├── hover-card.tsx
+│   │       │   │   ├── input-group.tsx
+│   │       │   │   ├── input-otp.tsx
+│   │       │   │   ├── input.tsx
+│   │       │   │   ├── item.tsx
+│   │       │   │   ├── kbd.tsx
+│   │       │   │   ├── label.tsx
+│   │       │   │   ├── marker.tsx
+│   │       │   │   ├── menubar.tsx
+│   │       │   │   ├── message-scroller.tsx
+│   │       │   │   ├── message.tsx
+│   │       │   │   ├── native-select.tsx
+│   │       │   │   ├── navigation-menu.tsx
+│   │       │   │   ├── pagination.tsx
+│   │       │   │   ├── popover.tsx
+│   │       │   │   ├── progress.tsx
+│   │       │   │   ├── questionnaire.tsx
+│   │       │   │   ├── radio-group.tsx
+│   │       │   │   ├── resizable.tsx
+│   │       │   │   ├── scroll-area.tsx
+│   │       │   │   ├── select.tsx
+│   │       │   │   ├── separator.tsx
+│   │       │   │   ├── sheet.tsx
+│   │       │   │   ├── sidebar.tsx
+│   │       │   │   ├── skeleton.tsx
+│   │       │   │   ├── slider.tsx
+│   │       │   │   ├── sonner.tsx
+│   │       │   │   ├── spinner.tsx
+│   │       │   │   ├── switch.tsx
+│   │       │   │   ├── table.tsx
+│   │       │   │   ├── tabs.tsx
+│   │       │   │   ├── textarea.tsx
+│   │       │   │   ├── toggle-group.tsx
+│   │       │   │   ├── toggle.tsx
+│   │       │   │   ├── tooltip.tsx
+│   │       │   │   └── trace.tsx
+│   │       │   ├── lib
+│   │       │   │   ├── highlighter.tsx
+│   │       │   │   └── utils.ts
+│   │       │   └── styles
+│   │       │       └── globals.css
+│   │       ├── tests
+│   │       │   └── highlighter.test.tsx
+│   │       └── tsconfig.json
+│   ├── patches
+│   │   └── @tanstack%2Fstart-plugin-core@1.171.55.patch
+│   ├── playwright.config.ts
+│   ├── README.md
+│   ├── renovate.json
+│   ├── .storybook
+│   │   ├── main.ts
+│   │   └── preview.ts
+│   ├── tooling
+│   │   ├── k6
+│   │   │   └── trpc-health.js
+│   │   └── validate-commit-message.ts
+│   ├── trivy.yaml
+│   ├── tsconfig.json
+│   └── vite.config.ts
+├── .env.example
+├── evlog.config.ts
+├── .gitignore
+├── lefthook.yml
+├── package.json
+├── project-tree.txt
+├── README.md
+├── renovate.json
+├── src
+│   ├── components
+│   │   ├── content
+│   │   │   ├── chart-renderer.tsx
+│   │   │   ├── community-markdown.test.tsx
+│   │   │   ├── community-markdown.tsx
+│   │   │   └── mdx-components.tsx
+│   │   └── ui
+│   │       ├── accordion.tsx
+│   │       ├── alert-dialog.tsx
+│   │       ├── alert.tsx
+│   │       ├── aspect-ratio.tsx
+│   │       ├── attachment.tsx
+│   │       ├── avatar.tsx
+│   │       ├── badge.tsx
+│   │       ├── breadcrumb.tsx
+│   │       ├── bubble.tsx
+│   │       ├── button-group.tsx
+│   │       ├── button.tsx
+│   │       ├── calendar.tsx
+│   │       ├── card.tsx
+│   │       ├── carousel.tsx
+│   │       ├── chart.tsx
+│   │       ├── checkbox.tsx
+│   │       ├── code-block.tsx
+│   │       ├── collapsible.tsx
+│   │       ├── combobox.tsx
+│   │       ├── command.tsx
+│   │       ├── context-menu.tsx
+│   │       ├── dialog.tsx
+│   │       ├── direction.tsx
+│   │       ├── drawer.tsx
+│   │       ├── dropdown-menu.tsx
+│   │       ├── empty.tsx
+│   │       ├── field.tsx
+│   │       ├── hover-card.tsx
+│   │       ├── input-group.tsx
+│   │       ├── input-otp.tsx
+│   │       ├── input.tsx
+│   │       ├── item.tsx
+│   │       ├── kbd.tsx
+│   │       ├── label.tsx
+│   │       ├── marker.tsx
+│   │       ├── menubar.tsx
+│   │       ├── message-scroller.tsx
+│   │       ├── message.tsx
+│   │       ├── native-select.tsx
+│   │       ├── navigation-menu.tsx
+│   │       ├── pagination.tsx
+│   │       ├── popover.tsx
+│   │       ├── progress.tsx
+│   │       ├── questionnaire.tsx
+│   │       ├── radio-group.tsx
+│   │       ├── resizable.tsx
+│   │       ├── scroll-area.tsx
+│   │       ├── select.tsx
+│   │       ├── separator.tsx
+│   │       ├── sheet.tsx
+│   │       ├── sidebar.tsx
+│   │       ├── skeleton.tsx
+│   │       ├── slider.tsx
+│   │       ├── sonner.tsx
+│   │       ├── spinner.tsx
+│   │       ├── switch.tsx
+│   │       ├── table.tsx
+│   │       ├── tabs.tsx
+│   │       ├── textarea.tsx
+│   │       ├── toggle-group.tsx
+│   │       ├── toggle.tsx
+│   │       ├── tooltip.tsx
+│   │       └── trace.tsx
+│   ├── content
+│   │   ├── mdx-validation.test.ts
+│   │   ├── mdx-validation.ts
+│   │   ├── queries.test.ts
+│   │   ├── queries.ts
+│   │   ├── schemas.test.ts
+│   │   ├── schemas.ts
+│   │   ├── ssr.test.tsx
+│   │   └── validate.ts
+│   ├── db
+│   │   ├── helpers
+│   │   │   ├── index.ts
+│   │   │   ├── pagination.ts
+│   │   │   ├── soft-delete.ts
+│   │   │   └── transaction.ts
+│   │   ├── index.ts
+│   │   ├── migrate.ts
+│   │   └── schema.ts
+│   ├── lib
+│   │   ├── env
+│   │   │   ├── client.ts
+│   │   │   └── server.ts
+│   │   ├── highlighter.tsx
+│   │   ├── logger.ts
+│   │   ├── query
+│   │   ├── query.test.ts
+│   │   ├── query.ts
+│   │   ├── server
+│   │   │   ├── db.ts
+│   │   │   ├── logger.ts
+│   │   │   └── trpc
+│   │   │       ├── context.test.ts
+│   │   │       ├── context.ts
+│   │   │       ├── index.ts
+│   │   │       ├── init.ts
+│   │   │       └── routers
+│   │   │           ├── _app.ts
+│   │   │           └── health.ts
+│   │   ├── trpc.ts
+│   │   └── utils.ts
+│   ├── router.tsx
+│   ├── routes
+│   │   ├── api.trpc.$.ts
+│   │   ├── courses.$courseSlug.$lessonSlug.tsx
+│   │   ├── courses.index.tsx
+│   │   ├── index.tsx
+│   │   └── __root.tsx
+│   ├── routeTree.gen.ts
+│   └── styles
+│       ├── globals.css
+│       ├── themes.css
+│       └── tokens.css
+├── .trivyignore
+├── tsconfig.json
+├── tsr.config.json
+├── vite.config.ts
+└── .vite-hooks
+    ├── _
+    │   ├── applypatch-msg
+    │   ├── commit-msg
+    │   ├── commit-msg.old
+    │   ├── .gitignore
+    │   ├── h
+    │   ├── post-applypatch
+    │   ├── post-checkout
+    │   ├── post-commit
+    │   ├── post-merge
+    │   ├── post-rewrite
+    │   ├── pre-applypatch
+    │   ├── pre-auto-gc
+    │   ├── pre-commit
+    │   ├── pre-commit.old
+    │   ├── pre-merge-commit
+    │   ├── prepare-commit-msg
+    │   ├── pre-push
+    │   ├── pre-push.old
+    │   └── pre-rebase
+    └── pre-commit
+
+155 directories, 457 files

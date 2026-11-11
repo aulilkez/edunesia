@@ -1,6 +1,8 @@
-import type { Database } from "@/db";
-import { database } from "@/lib/server/db";
-import { createWebLogger, type DomainLogger } from "@/lib/server/logger";
+import "@tanstack/react-start/server-only";
+
+import type { Database } from "@/server/db";
+import { database } from "@/server/db/connection";
+import { createWebLogger, type DomainLogger } from "@/server/logger";
 
 export interface TRPCContext {
   req: Request;

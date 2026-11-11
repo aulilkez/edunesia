@@ -2,7 +2,7 @@ import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import matter from "gray-matter";
 
-import { courseSchema, lessonSchema } from "./schemas";
+import { courseSchema, lessonSchema } from "../src/features/content/schemas";
 
 const coursesDirectory = join(process.cwd(), "content", "courses");
 const validationErrors: string[] = [];

@@ -10,7 +10,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { clientEnv } from "@/lib/env/client";
 import { websiteLogger } from "@/lib/logger";
 
-import type { AppRouter } from "@/lib/server/trpc";
+import type { AppRouter } from "@/server/trpc";
 
 export interface RouterContext {
   queryClient: QueryClient;

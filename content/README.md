@@ -17,7 +17,7 @@ content/
 ```
 
 Course and lesson frontmatter is validated with the shared Zod schemas in
-`src/content/schemas.ts`. Slugs are stable route identifiers, course and lesson
+`src/features/content/schemas.ts`. Slugs are stable route identifiers, course and lesson
 folders must match their metadata, published lessons must reference a course,
 and related lesson references must resolve within the same course. Draft
 content is validated and generated but excluded from public routes.
@@ -76,5 +76,5 @@ imports, scripts, or grading logic.
 `/courses/` lists published courses. Lessons use
 `/courses/{courseSlug}/{lessonSlug}` and provide metadata, canonical URLs,
 headings, and previous/next/related navigation. Use the typed helpers in
-`src/content/queries.ts` rather than reading generated collection arrays in
+`src/features/content/queries.ts` rather than reading generated collection arrays in
 individual routes.

@@ -11,6 +11,8 @@ export const publishedCourses = allCourses
   }))
   .filter((course) => course.firstLesson !== undefined);
 
+export type PublishedCourse = (typeof publishedCourses)[number];
+
 export function getPublishedLesson(courseSlug: string, lessonSlug: string) {
   const course = allCourses.find(
     (candidate) => candidate.slug === courseSlug && candidate.status === "published",
@@ -37,6 +39,8 @@ export function getPublishedLesson(courseSlug: string, lessonSlug: string) {
     relatedLessons,
   };
 }
+
+export type PublishedLesson = NonNullable<ReturnType<typeof getPublishedLesson>>;
 
 export function getTableOfContents(source: string) {
   const seen = new Map<string, number>();
@@ -89,3 +93,5 @@ export function getTableOfContents(source: string) {
 
   return headings;
 }
+
+export type TableOfContentsHeading = ReturnType<typeof getTableOfContents>[number];

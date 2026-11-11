@@ -1,0 +1,170 @@
+.
+├── AGENTS.md
+├── bun.lock
+├── components.json
+├── compose.yaml
+├── content
+│   ├── courses
+│   │   └── javascript-basics
+│   │       ├── course.mdx
+│   │       └── lessons
+│   │           └── variables.mdx
+│   └── README.md
+├── content-collections.ts
+├── CONTRIBUTING.md
+├── .cta.json
+├── docs
+│   ├── architecture.md
+│   ├── engineering.md
+│   ├── feature-architecture.md
+│   ├── repository-structure.txt
+│   └── server-client-boundaries.md
+├── drizzle.config.ts
+├── .env.example
+├── evlog.config.ts
+├── .gitignore
+├── lefthook.yml
+├── package.json
+├── project-tree.txt
+├── README.md
+├── renovate.json
+├── src
+│   ├── components
+│   │   └── ui
+│   │       ├── accordion.tsx
+│   │       ├── alert-dialog.tsx
+│   │       ├── alert.tsx
+│   │       ├── aspect-ratio.tsx
+│   │       ├── attachment.tsx
+│   │       ├── avatar.tsx
+│   │       ├── badge.tsx
+│   │       ├── breadcrumb.tsx
+│   │       ├── bubble.tsx
+│   │       ├── button-group.tsx
+│   │       ├── button.tsx
+│   │       ├── calendar.tsx
+│   │       ├── card.tsx
+│   │       ├── carousel.tsx
+│   │       ├── chart.tsx
+│   │       ├── checkbox.tsx
+│   │       ├── code-block.tsx
+│   │       ├── collapsible.tsx
+│   │       ├── combobox.tsx
+│   │       ├── command.tsx
+│   │       ├── context-menu.tsx
+│   │       ├── dialog.tsx
+│   │       ├── direction.tsx
+│   │       ├── drawer.tsx
+│   │       ├── dropdown-menu.tsx
+│   │       ├── empty.tsx
+│   │       ├── field.tsx
+│   │       ├── hover-card.tsx
+│   │       ├── input-group.tsx
+│   │       ├── input-otp.tsx
+│   │       ├── input.tsx
+│   │       ├── item.tsx
+│   │       ├── kbd.tsx
+│   │       ├── label.tsx
+│   │       ├── marker.tsx
+│   │       ├── menubar.tsx
+│   │       ├── message-scroller.tsx
+│   │       ├── message.tsx
+│   │       ├── native-select.tsx
+│   │       ├── navigation-menu.tsx
+│   │       ├── pagination.tsx
+│   │       ├── popover.tsx
+│   │       ├── progress.tsx
+│   │       ├── questionnaire.tsx
+│   │       ├── radio-group.tsx
+│   │       ├── resizable.tsx
+│   │       ├── scroll-area.tsx
+│   │       ├── select.tsx
+│   │       ├── separator.tsx
+│   │       ├── sheet.tsx
+│   │       ├── sidebar.tsx
+│   │       ├── skeleton.tsx
+│   │       ├── slider.tsx
+│   │       ├── sonner.tsx
+│   │       ├── spinner.tsx
+│   │       ├── switch.tsx
+│   │       ├── table.tsx
+│   │       ├── tabs.tsx
+│   │       ├── textarea.tsx
+│   │       ├── toggle-group.tsx
+│   │       ├── toggle.tsx
+│   │       ├── tooltip.tsx
+│   │       └── trace.tsx
+│   ├── features
+│   │   ├── community
+│   │   │   ├── components
+│   │   │   │   ├── community-markdown.test.tsx
+│   │   │   │   └── community-markdown.tsx
+│   │   │   └── index.ts
+│   │   ├── content
+│   │   │   ├── components
+│   │   │   │   ├── chart-renderer.tsx
+│   │   │   │   └── mdx-components.tsx
+│   │   │   ├── index.ts
+│   │   │   ├── mdx-validation.test.ts
+│   │   │   ├── mdx-validation.ts
+│   │   │   ├── queries.test.ts
+│   │   │   ├── queries.ts
+│   │   │   ├── schemas.test.ts
+│   │   │   ├── schemas.ts
+│   │   │   └── ssr.test.tsx
+│   │   └── learning
+│   │       ├── index.ts
+│   │       └── pages
+│   │           ├── courses-page.tsx
+│   │           └── lesson-page.tsx
+│   ├── lib
+│   │   ├── env
+│   │   │   ├── client.ts
+│   │   │   └── server.ts
+│   │   ├── highlighter.tsx
+│   │   ├── logger.ts
+│   │   ├── query
+│   │   ├── query.test.ts
+│   │   ├── query.ts
+│   │   ├── trpc.ts
+│   │   └── utils.ts
+│   ├── router.tsx
+│   ├── routes
+│   │   ├── api.trpc.$.ts
+│   │   ├── courses.$courseSlug.$lessonSlug.tsx
+│   │   ├── courses.index.tsx
+│   │   ├── index.tsx
+│   │   └── __root.tsx
+│   ├── routeTree.gen.ts
+│   ├── server
+│   │   ├── db
+│   │   │   ├── connection.ts
+│   │   │   ├── helpers
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── pagination.ts
+│   │   │   │   ├── soft-delete.ts
+│   │   │   │   └── transaction.ts
+│   │   │   ├── index.ts
+│   │   │   ├── migrate.ts
+│   │   │   └── schema.ts
+│   │   ├── logger.ts
+│   │   └── trpc
+│   │       ├── context.test.ts
+│   │       ├── context.ts
+│   │       ├── index.ts
+│   │       ├── init.ts
+│   │       └── routers
+│   │           ├── _app.ts
+│   │           └── health.ts
+│   └── styles
+│       ├── globals.css
+│       ├── themes.css
+│       └── tokens.css
+├── tooling
+│   └── validate-content.ts
+├── .trivyignore
+├── tsconfig.json
+├── tsr.config.json
+└── vite.config.ts
+
+27 directories, 141 files

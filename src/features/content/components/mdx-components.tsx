@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/code-block";
 import { Table as UiTable } from "@/components/ui/table";
 import { Tabs as UiTabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { isSafeContentUrl } from "@/content/schemas";
+import { isSafeContentUrl } from "@/features/content/schemas";
 import { websiteLogger } from "@/lib/logger";
 
 import type { ChartRendererProps } from "./chart-renderer";

@@ -10,7 +10,7 @@ const client = postgres(serverEnv.DATABASE_URL, { max: 1 });
 
 try {
   await migrate(drizzle(client), {
-    migrationsFolder: fileURLToPath(new URL("../../drizzle", import.meta.url)),
+    migrationsFolder: fileURLToPath(new URL("../../../drizzle", import.meta.url)),
   });
 } finally {
   await client.end();
