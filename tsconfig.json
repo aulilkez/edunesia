@@ -1,5 +1,12 @@
 {
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "vite.config.ts",
+    "drizzle.config.ts",
+    "evlog.config.ts"
+  ],
+  "exclude": ["edunesia-main", "node_modules", "dist"],
   "compilerOptions": {
     "target": "ES2022",
     "jsx": "react-jsx",

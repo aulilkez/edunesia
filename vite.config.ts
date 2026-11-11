@@ -27,6 +27,9 @@ const config = defineConfig(({ mode }) => {
       rules: { "vite-plus/prefer-vite-plus-imports": "error" },
       options: { typeAware: true, typeCheck: true },
     },
+    test: {
+      include: ["src/**/*.test.{ts,tsx}"],
+    },
     resolve: { tsconfigPaths: true },
     plugins: lazyPlugins(() => [devtools(), evlog(), tailwindcss(), tanstackStart(), viteReact()]),
   };

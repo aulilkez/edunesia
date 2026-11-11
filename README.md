@@ -34,6 +34,17 @@ The initial Drizzle schema is in `src/db/schema.ts`. Generate future migrations 
 explicit database, auth, and SMTP settings; SMTP credentials and each OAuth provider's ID/secret
 must be configured as pairs.
 
+The tRPC API is available at `/api/trpc`. Its request context and router initialization are in
+`src/lib/server/trpc/`; the API route only adapts HTTP requests. Add procedures through
+`src/lib/server/trpc/init.ts` and compose domain routers in `src/lib/server/trpc/routers/_app.ts`.
+For client queries, use `useTRPC()` from `src/lib/trpc` with TanStack Query hooks. The home page
+demonstrates a health query prefetched by its route loader. QueryClient state is isolated per router
+request and dehydrated/hydrated by `@tanstack/react-router-ssr-query`.
+
+The health procedure is public. There is no authentication integration in this starter yet, so
+do not expose private data or add protected procedures until an auth provider is configured.
+Run the tRPC/query checks with `bun run test`.
+
 # Building For Production
 
 To build this application for production:

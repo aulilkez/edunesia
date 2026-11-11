@@ -1,4 +1,6 @@
-import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
+import { HeadContent, Scripts, createRootRouteWithContext } from "@tanstack/react-router";
+import type { QueryClient } from "@tanstack/react-query";
+import type { TRPCOptionsProxy } from "@trpc/tanstack-react-query";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { TanStackDevtools } from "@tanstack/react-devtools";
 import { useEffect } from "react";
@@ -8,7 +10,14 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { clientEnv } from "@/lib/env/client";
 import { websiteLogger } from "@/lib/logger";
 
-export const Route = createRootRoute({
+import type { AppRouter } from "@/lib/server/trpc";
+
+export interface RouterContext {
+  queryClient: QueryClient;
+  trpc: TRPCOptionsProxy<AppRouter>;
+}
+
+export const Route = createRootRouteWithContext<RouterContext>()({
   head: () => ({
     meta: [
       {
