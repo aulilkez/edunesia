@@ -18,3 +18,4 @@ todos.json
 # dotenv environment variable files
 .env.*
 !.env.example
+edunesia-main

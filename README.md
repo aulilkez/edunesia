@@ -5,9 +5,21 @@ Welcome to your new TanStack Start app!
 To run this application:
 
 ```bash
+cp .env.example .env
 bun install
 bun --bun run dev
 ```
+
+## Environment Variables
+
+Environment variables are validated with Zod through `@t3-oss/env-core`. Import
+`clientEnv` from `src/lib/env/client.ts` for browser-safe `VITE_*` values and
+`serverEnv` from `src/lib/env/server.ts` only in server-side code. Server secrets are never
+available through `clientEnv`.
+
+The local database URL in `.env.example` matches the PostgreSQL credentials in
+`edunesia-main/compose.yaml`. Production requires explicit database, auth, and SMTP settings;
+SMTP credentials and each OAuth provider's ID/secret must be configured as pairs.
 
 # Building For Production
 
